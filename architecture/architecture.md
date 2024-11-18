@@ -25,42 +25,32 @@
   Deze service maakt het mogelijk voor redacteurs om posts goed te keuren of af te wijzen. Het werkt samen met de PostService via Open-Feign, zodat postgegevens efficiënt kunnen worden opgehaald zonder logica te dupliceren.
 
 - **CommentService:**  
-  Gebruikers kunnen reacties plaatsen op posts via deze service, die verantwoordelijk is voor het beheer en de opslag van reacties in een eigen MySQL-database.
+  Via deze service kunnen gebruikers reacties achterlaten op posts. De service zorgt ervoor dat reacties goed worden beheerd en opgeslagen in een aparte MySQL-database, zodat alles overzichtelijk blijft.
 
 ---
 
 ## Configuratie en Berichtenuitwisseling
 
 - **Config Service:**  
-  Beheert gedeelde configuratie-instellingen voor alle microservices, zoals logniveaus en database-URL's.
+  Deze service zorgt voor het beheer van gedeelde instellingen die door alle microservices worden gebruikt, zoals bijvoorbeeld logniveaus. Dit maakt het makkelijker om belangrijke configuraties centraal te beheren.
 
 - **Event Bus:**  
-  Zorgt voor de uitwisseling van berichten tussen microservices, waardoor ze onafhankelijk kunnen reageren op gebeurtenissen (zoals het publiceren van een post).
+  De Event Bus zorgt ervoor dat microservices met elkaar kunnen communiceren door berichten uit te wisselen. Dit maakt het mogelijk voor de services om onafhankelijk van elkaar te reageren op gebeurtenissen, zoals wanneer een nieuwe post wordt gepubliceerd.
 
 ---
 
 ## Communicatie en Loggen
 
 - **Open-Feign:**  
-  Voor asynchrone communicatie tussen microservices, zoals de PostService en ReviewService. Dit verhoogt de modulariteit en zorgt voor efficiënte communicatie zonder prestatieverlies.
+  Open-Feign maakt asynchrone communicatie tussen microservices mogelijk, bijvoorbeeld tussen de PostService en ReviewService. Dit zorgt ervoor dat de communicatie efficiënter verloopt, zonder dat het prestaties van de services negatief beïnvloedt, en maakt de architectuur modulairder.
 
 - **Message Bus:**  
-  Maakt asynchrone communicatie tussen microservices mogelijk om directe afhankelijkheden te vermijden.
-  - **PostService:** Stuurt berichten naar de Event Bus bij het aanmaken, aanpassen, goedkeuren of afwijzen van posts.
-  - **ReviewService:** Verzendt meldingen over goedkeuringen of afwijzingen van posts.
-  - **CommentService:** Stuurt berichten bij nieuwe of gewijzigde reacties, zodat andere services zoals de PostService notificaties kunnen beheren.
+  De Message Bus maakt asynchrone communicatie tussen microservices mogelijk, wat helpt om directe afhankelijkheden te vermijden. Hierdoor kunnen microservices elkaar niet blokkeren en blijven ze flexibel.
+  - **PostService:** Verstuurt berichten naar de Event Bus wanneer posts worden aangemaakt, aangepast, goedgekeurd of afgewezen.
+  - **ReviewService:** Verzendt meldingen naar de Event Bus wanneer posts worden goedgekeurd of afgewezen.
+  - **CommentService:** Stuur berichten wanneer er nieuwe reacties worden geplaatst of bestaande reacties worden aangepast, zodat andere services, zoals de PostService, notificaties kunnen versturen.
 
 - **LogBack:**  
-  Geïmplementeerd in elke microservice voor het loggen van informatie op het scherm en in bestanden, wat debugging en monitoring vereenvoudigt.
-
----
-
-## Testdekking
-
-- **Backend:**  
-  Er wordt een testdekking van 70% vereist, met focus op unit- en integratietests om de belangrijkste functionaliteiten te valideren.
-
-- **Frontend:**  
-  De testdekking moet 50% bedragen, waarbij cruciale UI-componenten en functies worden getest.
+  LogBack wordt in elke microservice gebruikt om loggegevens vast te leggen, zowel op het scherm als in bestanden. Dit maakt het eenvoudiger om problemen op te sporen en het systeem te monitoren.
 
 ---
