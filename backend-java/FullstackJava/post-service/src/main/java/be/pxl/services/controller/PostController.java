@@ -4,7 +4,6 @@ import be.pxl.services.domain.dto.FilterRequest;
 import be.pxl.services.domain.dto.PostRequest;
 import be.pxl.services.domain.dto.PostUpdateRequest;
 import be.pxl.services.service.IPostService;
-import jakarta.persistence.PostUpdate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
