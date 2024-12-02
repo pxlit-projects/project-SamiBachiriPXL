@@ -9,6 +9,7 @@ import be.pxl.services.domain.dto.PostResponse;
 import be.pxl.services.domain.dto.PostUpdateRequest;
 import be.pxl.services.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 import java.util.Comparator;
@@ -16,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class PostService implements IPostService {
     private final PostRepository postRepository;
@@ -70,20 +72,21 @@ public class PostService implements IPostService {
 
     @RabbitListener(queues = "myQueue")
     public void handleReview(Review review) {
-        Post post = postRepository.findById(review.getPostId()).orElseThrow(() -> new RuntimeException("Post not found"));
-        if (post.getReviewStatus() != ReviewStatus.APPROVED) {
-            throw new RuntimeException("Post already approved");
+        try {
+            Post post = postRepository.findById(review.getPostId())
+                    .orElseThrow(() -> new RuntimeException("Post not found"));
+            if (review.isApproved()) {
+                post.setReviewStatus(ReviewStatus.APPROVED);
+                post.setReviewComment(null);
+            } else {
+                post.setReviewStatus(ReviewStatus.REJECTED);
+                post.setReviewComment(review.getContent());
+            }
+            postRepository.save(post);
+        } catch (RuntimeException e) {
+            // Log the exception and handle it gracefully
+            log.error("Failed to handle review: {}", e.getMessage());
         }
-        if (post.isConcept()){
-            throw new RuntimeException("Post is a concept");
-        }
-        if (review.isApproved()) {
-            post.setReviewStatus(ReviewStatus.APPROVED);
-            post.setReviewComment(null);
-        } else {
-            post.setReviewStatus(ReviewStatus.REJECTED);
-            post.setReviewComment(review.getContent());
-        }
-        postRepository.save(post);
     }
+
 }
