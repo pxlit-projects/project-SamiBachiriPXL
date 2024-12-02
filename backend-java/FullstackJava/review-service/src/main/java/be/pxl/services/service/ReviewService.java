@@ -13,22 +13,39 @@ import org.springframework.stereotype.Service;
 public class ReviewService implements IReviewService {
     private final RabbitTemplate rabbitTemplate;
     private final ReviewRepository reviewRepository;
+    private final NotificationService notificationService;
 
     @Override
-    @RabbitListener(queues = "myQueue")
     public void createReview(Long id, ReviewRequest reviewRequest) {
-        Review review = Review.builder()
-                .content(reviewRequest.getContent())
-                .editor(reviewRequest.getEditor())
-                .approved(reviewRequest.isApproved())
-                .postId(id)
-                .build();
-
-        reviewRepository.save(review);
-        if (review.isApproved()) {
-            rabbitTemplate.convertAndSend("myQueue", "Post approved: " + review.getPostId());
-        } else {
-            rabbitTemplate.convertAndSend("myQueue", "Post rejected: " + review.getPostId() + ". Comment: " + review.getContent());
+        if (!reviewRequest.isApproved() && reviewRequest.getContent().isEmpty()) {
+            throw new RuntimeException("Review content can't be empty when not approved.");
         }
+        if (reviewRepository.findByPostId(id) != null) {
+            Review review = reviewRepository.findByPostId(id);
+            review.setContent(reviewRequest.getContent());
+            review.setEditor(reviewRequest.getEditor());
+            review.setApproved(reviewRequest.isApproved());
+            reviewRepository.save(review);
+            rabbitTemplate.convertAndSend("myQueue",  review);
+            sendNotification(review);
+        }
+        else{
+            Review review = Review.builder()
+                    .content(reviewRequest.getContent())
+                    .editor(reviewRequest.getEditor())
+                    .approved(reviewRequest.isApproved())
+                    .postId(id)
+                    .build();
+            reviewRepository.save(review);
+            rabbitTemplate.convertAndSend("myQueue",  review);
+            sendNotification(review);
+        }
+    }
+
+    private void sendNotification(Review review) {
+        String message = review.isApproved() ?
+                "Your post has been approved." :
+                "Your post has been rejected.";
+        notificationService.sendNotification(review.getEditor(), message);
     }
 }

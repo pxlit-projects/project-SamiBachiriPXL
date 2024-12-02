@@ -1,15 +1,34 @@
 version: '3.8'
 services:
-  mysql:
+  postService-db:
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: FullstackJava_db
+      MYSQL_DATABASE: postService_db
       MYSQL_USER: student
       MYSQL_PASSWORD: student
     ports:
-      - "3306:3306"
-    container_name: mysql-container
+      - "3308:3306"
+
+  reviewService-db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: reviewService_db
+      MYSQL_USER: student
+      MYSQL_PASSWORD: student
+    ports:
+      - "3309:3306"
+
+  commentService-db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: commentService_db
+      MYSQL_USER: student
+      MYSQL_PASSWORD: student
+    ports:
+      - "3310:3306"
   rabbitmq:
     image: rabbitmq:management
     ports:

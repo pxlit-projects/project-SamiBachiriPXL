@@ -1,6 +1,7 @@
 package be.pxl.services.service;
 
 import be.pxl.services.domain.Post;
+import be.pxl.services.domain.Review;
 import be.pxl.services.domain.ReviewStatus;
 import be.pxl.services.domain.dto.FilterRequest;
 import be.pxl.services.domain.dto.PostRequest;
@@ -68,17 +69,20 @@ public class PostService implements IPostService {
     }
 
     @RabbitListener(queues = "myQueue")
-    public void handleReview(String message) {
-        message = message.replace("\"", "").trim();
-        String[] parts = message.split(":");
-        Long postId = Long.parseLong(parts[1].strip());
-        Post post = postRepository.findById(postId).orElseThrow(() -> new RuntimeException("Post not found"));
-        if (parts[0].equals("Post approved")) {
+    public void handleReview(Review review) {
+        Post post = postRepository.findById(review.getPostId()).orElseThrow(() -> new RuntimeException("Post not found"));
+        if (post.getReviewStatus() != ReviewStatus.APPROVED) {
+            throw new RuntimeException("Post already approved");
+        }
+        if (post.isConcept()){
+            throw new RuntimeException("Post is a concept");
+        }
+        if (review.isApproved()) {
             post.setReviewStatus(ReviewStatus.APPROVED);
             post.setReviewComment(null);
         } else {
             post.setReviewStatus(ReviewStatus.REJECTED);
-            post.setReviewComment(parts[2].strip());
+            post.setReviewComment(review.getContent());
         }
         postRepository.save(post);
     }

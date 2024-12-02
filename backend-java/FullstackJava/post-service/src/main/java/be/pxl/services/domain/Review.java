@@ -6,25 +6,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "post")
-public class Post {
-
+@Table(name = "review")
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String title;
+    private Long postId;
+    private String editor;
     private String content;
-    private String author;
-    private Date creationDate;
-    private boolean isConcept;
-    @Enumerated(EnumType.STRING)
-    private ReviewStatus reviewStatus;
-    private String reviewComment;
+    private boolean approved;
 }
