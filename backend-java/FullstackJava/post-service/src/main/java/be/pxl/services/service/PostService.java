@@ -84,7 +84,6 @@ public class PostService implements IPostService {
             }
             postRepository.save(post);
         } catch (RuntimeException e) {
-            // Log the exception and handle it gracefully
             log.error("Failed to handle review: {}", e.getMessage());
         }
     }

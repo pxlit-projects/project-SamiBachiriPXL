@@ -28,6 +28,7 @@
         <module>gateway-service</module>
         <module>config-server</module>
         <module>config-server</module>
+        <module>comment-service</module>
     </modules>
     <scm>
         <connection/>
