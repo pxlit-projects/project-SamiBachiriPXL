@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/post")
 public class PostController {
     private final IPostService postService;
 
@@ -38,7 +37,6 @@ public class PostController {
             return new ResponseEntity<>(postService.getAllPosts(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-
     }
 
     @GetMapping("/published")

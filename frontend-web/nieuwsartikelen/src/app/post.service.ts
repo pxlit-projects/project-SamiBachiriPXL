@@ -8,7 +8,7 @@ import {PostRequest} from './models/postRequest.model';
 })
 export class PostService {
   http: HttpClient = inject(HttpClient);
-  url = 'http://localhost:8081/api/post';
+  url = 'http://localhost:8080/api/post/';
 
   constructor() {}
 
@@ -19,7 +19,7 @@ export class PostService {
   }
 
   getPublisedPosts(){
-      return this.http.get(this.url + '/published');
+      return this.http.get(this.url + 'published');
   }
 
   createPost(postRequest: PostRequest) {
