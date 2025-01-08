@@ -1,174 +1,102 @@
-2025-01-08 08:56:50 INFO  b.p.s.CommentServiceApplication - Starting CommentServiceApplication using Java 19.0.2 with PID 22208 (C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava\comment-service\target\classes started by Sami Bachiri in C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava)
-2025-01-08 08:56:50 INFO  b.p.s.CommentServiceApplication - No active profile set, falling back to 1 default profile: "default"
-2025-01-08 08:56:50 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Fetching config from server at : http://localhost:8088/
-2025-01-08 08:56:50 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Located environment: name=comment-service, profiles=[default], label=null, version=null, state=null
-2025-01-08 08:56:51 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-01-08 08:56:51 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 98 ms. Found 1 JPA repository interface.
-2025-01-08 08:56:51 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=5a96a377-1447-3009-8bf3-5b161d6c14de
-2025-01-08 08:56:51 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-01-08 08:56:51 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
-2025-01-08 08:56:51 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8085 (http)
-2025-01-08 08:56:51 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
-2025-01-08 08:56:51 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-01-08 08:56:51 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
-2025-01-08 08:56:51 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-01-08 08:56:51 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1168 ms
-2025-01-08 08:56:51 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-01-08 08:56:51 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
-2025-01-08 08:56:51 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-01-08 08:56:52 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-01-08 08:56:52 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-01-08 08:56:53 WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
-java.lang.NullPointerException: Cannot invoke "org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(java.sql.SQLException, String)" because the return value of "org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.sqlExceptionHelper()" is null
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:290)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:123)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:77)
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
-	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189)
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
-	at be.pxl.services.CommentServiceApplication.main(CommentServiceApplication.java:18)
-2025-01-08 08:56:53 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-01-08 08:56:53 WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-01-08 08:56:53 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-01-08 08:56:53 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-01-08 08:56:55 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-2025-01-08 08:56:55 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-2025-01-08 08:56:55 ERROR o.s.o.j.LocalContainerEntityManagerFactoryBean - Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
-2025-01-08 08:56:55 WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
-2025-01-08 09:08:13 INFO  b.p.s.CommentServiceApplication - Starting CommentServiceApplication using Java 19.0.2 with PID 15900 (C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava\comment-service\target\classes started by Sami Bachiri in C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava)
-2025-01-08 09:08:13 INFO  b.p.s.CommentServiceApplication - No active profile set, falling back to 1 default profile: "default"
-2025-01-08 09:08:13 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Fetching config from server at : http://localhost:8088/
-2025-01-08 09:08:13 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Located environment: name=comment-service, profiles=[default], label=null, version=null, state=null
-2025-01-08 09:08:13 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-01-08 09:08:13 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 96 ms. Found 1 JPA repository interface.
-2025-01-08 09:08:14 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=5a96a377-1447-3009-8bf3-5b161d6c14de
-2025-01-08 09:08:14 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-01-08 09:08:14 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
-2025-01-08 09:08:14 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8085 (http)
-2025-01-08 09:08:14 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
-2025-01-08 09:08:14 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-01-08 09:08:14 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
-2025-01-08 09:08:14 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-01-08 09:08:14 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1107 ms
-2025-01-08 09:08:14 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-01-08 09:08:14 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
-2025-01-08 09:08:14 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-01-08 09:08:14 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-01-08 09:08:14 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-01-08 09:08:15 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@26a202ae
-2025-01-08 09:08:15 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-01-08 09:08:15 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-01-08 09:08:15 WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-01-08 09:08:15 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-01-08 09:08:15 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-01-08 09:08:16 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-01-08 09:08:17 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
-2025-01-08 09:08:18 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
-2025-01-08 09:08:18 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
-2025-01-08 09:08:18 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2025-01-08 09:08:18 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
-2025-01-08 09:08:18 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
-2025-01-08 09:08:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 09:08:18 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
-2025-01-08 09:08:18 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
-2025-01-08 09:08:18 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
-2025-01-08 09:08:18 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
-2025-01-08 09:08:18 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
-2025-01-08 09:08:18 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
-2025-01-08 09:08:18 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
-2025-01-08 09:08:19 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
-2025-01-08 09:08:19 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
-2025-01-08 09:08:19 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
-2025-01-08 09:08:19 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1736323699073 with initial instances count: 1
-2025-01-08 09:08:19 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application COMMENT-SERVICE with eureka with status UP
-2025-01-08 09:08:19 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736323699078, current=UP, previous=STARTING]
-2025-01-08 09:08:19 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
-2025-01-08 09:08:19 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/localhost:comment-service:8085: registering service...
-2025-01-08 09:08:19 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8085 (http) with context path '/'
-2025-01-08 09:08:19 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8085
-2025-01-08 09:08:19 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/localhost:comment-service:8085 - registration status: 204
-2025-01-08 09:08:20 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
-2025-01-08 09:08:20 INFO  b.p.s.CommentServiceApplication - Started CommentServiceApplication in 8.903 seconds (process running for 9.561)
-2025-01-08 09:13:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 09:18:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 09:23:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 09:28:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 09:33:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 09:38:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 09:43:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 09:48:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 09:53:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 09:58:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 10:03:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 10:08:18 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 10:13:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 10:18:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 10:23:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 10:28:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 10:33:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 10:38:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 10:43:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 10:48:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 10:53:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 10:58:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 11:03:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 11:08:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 11:13:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 11:18:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 11:23:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 11:28:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 11:33:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 11:38:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 11:43:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 11:48:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 11:53:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 11:58:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 12:03:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 12:06:24 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application COMMENT-SERVICE with eureka with status DOWN
-2025-01-08 12:06:24 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736334384706, current=DOWN, previous=UP]
-2025-01-08 12:06:24 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/localhost:comment-service:8085: registering service...
-2025-01-08 12:06:24 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/localhost:comment-service:8085 - registration status: 204
+2025-01-08 09:08:31 INFO  b.p.s.ReviewServiceApplication - Starting ReviewServiceApplication using Java 19.0.2 with PID 1224 (C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava\review-service\target\classes started by Sami Bachiri in C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava)
+2025-01-08 09:08:31 INFO  b.p.s.ReviewServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-08 09:08:31 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Fetching config from server at : http://localhost:8088/
+2025-01-08 09:08:31 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Located environment: name=review-service, profiles=[default], label=null, version=null, state=null
+2025-01-08 09:08:31 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-08 09:08:31 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 96 ms. Found 1 JPA repository interface.
+2025-01-08 09:08:32 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=f28d6abc-8b3a-36c5-b9a6-909139b9d0cc
+2025-01-08 09:08:32 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2025-01-08 09:08:32 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2025-01-08 09:08:32 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8082 (http)
+2025-01-08 09:08:32 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2025-01-08 09:08:32 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-08 09:08:32 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2025-01-08 09:08:32 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-08 09:08:32 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1101 ms
+2025-01-08 09:08:32 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-08 09:08:32 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2025-01-08 09:08:32 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-08 09:08:32 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-08 09:08:32 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-08 09:08:33 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@753e4eb5
+2025-01-08 09:08:33 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-08 09:08:33 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-08 09:08:33 WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-01-08 09:08:33 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-08 09:08:33 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-08 09:08:34 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-08 09:08:35 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2025-01-08 09:08:36 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2025-01-08 09:08:36 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2025-01-08 09:08:36 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2025-01-08 09:08:36 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2025-01-08 09:08:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2025-01-08 09:08:36 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1736323716993 with initial instances count: 3
+2025-01-08 09:08:36 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application REVIEW-SERVICE with eureka with status UP
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736323716997, current=UP, previous=STARTING]
+2025-01-08 09:08:36 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/localhost:review-service:8082: registering service...
+2025-01-08 09:08:36 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2025-01-08 09:08:37 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8082 (http) with context path '/'
+2025-01-08 09:08:37 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8082
+2025-01-08 09:08:37 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/localhost:review-service:8082 - registration status: 204
+2025-01-08 09:08:38 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2025-01-08 09:08:38 INFO  b.p.s.ReviewServiceApplication - Started ReviewServiceApplication in 8.912 seconds (process running for 9.52)
+2025-01-08 09:13:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 09:18:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 09:23:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 09:28:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 09:33:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 09:38:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 09:43:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 09:48:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 09:53:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 09:58:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 10:03:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 10:08:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 10:13:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 10:18:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 10:23:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 10:28:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 10:33:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 10:38:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 10:43:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 10:48:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 10:53:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 10:58:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 11:03:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 11:08:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 11:13:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 11:18:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 11:23:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 11:28:36 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 11:33:37 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 11:38:37 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 11:43:37 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 11:48:37 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 11:53:37 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 11:58:37 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 12:03:37 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 12:06:24 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application REVIEW-SERVICE with eureka with status DOWN
+2025-01-08 12:06:24 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736334384690, current=DOWN, previous=UP]
+2025-01-08 12:06:24 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/localhost:review-service:8082: registering service...
+2025-01-08 12:06:24 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/localhost:review-service:8082 - registration status: 204
 2025-01-08 12:06:25 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-01-08 12:06:25 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2025-01-08 12:06:25 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
 2025-01-08 12:06:25 INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
 2025-01-08 12:06:28 INFO  c.netflix.discovery.DiscoveryClient - Unregistering ...
-2025-01-08 12:06:28 INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8061/eureka/} exception=I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/localhost:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/localhost:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+2025-01-08 12:06:28 INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8061/eureka/} exception=I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/localhost:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/localhost:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
 	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915)
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895)
 	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:790)
@@ -249,8 +177,8 @@ Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http:
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889)
 	... 37 more
 
-2025-01-08 12:06:28 WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/localhost:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
-2025-01-08 12:06:28 INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8061/eureka/}, exception=I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/localhost:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/localhost:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+2025-01-08 12:06:28 WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/localhost:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+2025-01-08 12:06:28 INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8061/eureka/}, exception=I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/localhost:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/localhost:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
 	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915)
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895)
 	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:790)
@@ -332,8 +260,8 @@ Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http:
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889)
 	... 38 more
 
-2025-01-08 12:06:28 WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/localhost:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
-2025-01-08 12:06:28 ERROR c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/localhost:comment-service:8085 - de-registration failedCannot execute request on any known server
+2025-01-08 12:06:28 WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/localhost:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+2025-01-08 12:06:28 ERROR c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/localhost:review-service:8082 - de-registration failedCannot execute request on any known server
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
 	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
@@ -366,106 +294,154 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
 	at java.base/java.lang.Thread.run(Thread.java:1589)
 2025-01-08 12:06:28 INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
-2025-01-08 12:18:20 INFO  b.p.s.CommentServiceApplication - Starting CommentServiceApplication using Java 19.0.2 with PID 7136 (C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava\comment-service\target\classes started by Sami Bachiri in C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava)
-2025-01-08 12:18:20 INFO  b.p.s.CommentServiceApplication - No active profile set, falling back to 1 default profile: "default"
-2025-01-08 12:18:20 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Fetching config from server at : http://localhost:8088/
-2025-01-08 12:18:20 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Located environment: name=comment-service, profiles=[default], label=null, version=null, state=null
-2025-01-08 12:18:21 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-01-08 12:18:21 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 99 ms. Found 1 JPA repository interface.
-2025-01-08 12:18:21 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=5a96a377-1447-3009-8bf3-5b161d6c14de
-2025-01-08 12:18:21 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-01-08 12:18:21 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
-2025-01-08 12:18:21 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8085 (http)
-2025-01-08 12:18:21 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
-2025-01-08 12:18:21 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-01-08 12:18:21 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
-2025-01-08 12:18:22 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-01-08 12:18:22 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1186 ms
-2025-01-08 12:18:22 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-01-08 12:18:22 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
-2025-01-08 12:18:22 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-01-08 12:18:22 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-01-08 12:18:22 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-01-08 12:18:22 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@284b487f
-2025-01-08 12:18:22 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-01-08 12:18:22 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-01-08 12:18:22 WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-01-08 12:18:23 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-01-08 12:18:23 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-01-08 12:18:23 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-01-08 12:18:25 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
-2025-01-08 12:18:26 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
-2025-01-08 12:18:26 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
-2025-01-08 12:18:26 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2025-01-08 12:18:26 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
-2025-01-08 12:18:26 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
-2025-01-08 12:18:26 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1736335106885 with initial instances count: 2
-2025-01-08 12:18:26 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application COMMENT-SERVICE with eureka with status UP
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736335106890, current=UP, previous=STARTING]
-2025-01-08 12:18:26 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/localhost:comment-service:8085: registering service...
-2025-01-08 12:18:26 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8085 (http) with context path '/'
-2025-01-08 12:18:26 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8085
-2025-01-08 12:18:26 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/localhost:comment-service:8085 - registration status: 204
-2025-01-08 12:18:28 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
-2025-01-08 12:18:28 INFO  b.p.s.CommentServiceApplication - Started CommentServiceApplication in 9.223 seconds (process running for 9.833)
-2025-01-08 14:17:32 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53795] throws
+2025-01-08 12:18:03 INFO  b.p.s.ReviewServiceApplication - Starting ReviewServiceApplication using Java 19.0.2 with PID 4564 (C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava\review-service\target\classes started by Sami Bachiri in C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava)
+2025-01-08 12:18:03 INFO  b.p.s.ReviewServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-08 12:18:03 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Fetching config from server at : http://localhost:8088/
+2025-01-08 12:18:03 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Located environment: name=review-service, profiles=[default], label=null, version=null, state=null
+2025-01-08 12:18:04 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-08 12:18:04 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 104 ms. Found 1 JPA repository interface.
+2025-01-08 12:18:04 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=f28d6abc-8b3a-36c5-b9a6-909139b9d0cc
+2025-01-08 12:18:04 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2025-01-08 12:18:04 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2025-01-08 12:18:04 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8082 (http)
+2025-01-08 12:18:04 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2025-01-08 12:18:04 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-08 12:18:04 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2025-01-08 12:18:04 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-08 12:18:04 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1198 ms
+2025-01-08 12:18:04 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-08 12:18:04 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2025-01-08 12:18:04 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-08 12:18:05 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-08 12:18:05 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-08 12:18:05 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@12a9e864
+2025-01-08 12:18:05 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-08 12:18:05 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-08 12:18:05 WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-01-08 12:18:06 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-08 12:18:06 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-08 12:18:06 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-08 12:18:08 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2025-01-08 12:18:09 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2025-01-08 12:18:09 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2025-01-08 12:18:09 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2025-01-08 12:18:09 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2025-01-08 12:18:09 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2025-01-08 12:18:09 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1736335089604 with initial instances count: 2
+2025-01-08 12:18:09 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application REVIEW-SERVICE with eureka with status UP
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736335089608, current=UP, previous=STARTING]
+2025-01-08 12:18:09 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/localhost:review-service:8082: registering service...
+2025-01-08 12:18:09 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8082 (http) with context path '/'
+2025-01-08 12:18:09 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8082
+2025-01-08 12:18:09 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/localhost:review-service:8082 - registration status: 204
+2025-01-08 12:18:10 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2025-01-08 12:18:10 INFO  b.p.s.ReviewServiceApplication - Started ReviewServiceApplication in 9.307 seconds (process running for 10.121)
+2025-01-08 12:23:09 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 14:17:24 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53765] throws
 java.io.IOException: The server sockets created using the LocalRMIServerSocketFactory only accept connections from clients running on the host where the RMI remote objects have been exported.
 	at jdk.management.agent/sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:114)
 	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:424)
 	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:388)
 	at java.base/java.lang.Thread.run(Thread.java:1589)
-2025-01-08 14:17:32 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53795] throws
+2025-01-08 14:17:25 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53765] throws
 java.io.IOException: The server sockets created using the LocalRMIServerSocketFactory only accept connections from clients running on the host where the RMI remote objects have been exported.
 	at jdk.management.agent/sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:114)
 	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:424)
 	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:388)
 	at java.base/java.lang.Thread.run(Thread.java:1589)
-2025-01-08 14:17:32 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53795] throws
+2025-01-08 14:17:25 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53765] throws
 java.io.IOException: The server sockets created using the LocalRMIServerSocketFactory only accept connections from clients running on the host where the RMI remote objects have been exported.
 	at jdk.management.agent/sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:114)
 	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:424)
 	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:388)
 	at java.base/java.lang.Thread.run(Thread.java:1589)
-2025-01-08 14:17:36 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h54m43s121ms937µs100ns).
-2025-01-08 14:17:39 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 14:22:39 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 14:27:39 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 14:32:39 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 14:37:39 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 14:42:39 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 14:47:39 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 14:52:39 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 16:31:58 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h39m21s645ms588µs400ns).
-2025-01-08 16:36:31 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 16:41:31 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 16:46:31 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 16:51:31 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 16:56:31 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 17:01:31 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 17:06:31 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 17:11:31 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 17:13:28 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application COMMENT-SERVICE with eureka with status DOWN
-2025-01-08 17:13:28 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736352808736, current=DOWN, previous=UP]
-2025-01-08 17:13:28 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/localhost:comment-service:8085: registering service...
-2025-01-08 17:13:28 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/localhost:comment-service:8085 - registration status: 204
-2025-01-08 17:13:28 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-08 14:17:25 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53765] throws
+java.io.IOException: The server sockets created using the LocalRMIServerSocketFactory only accept connections from clients running on the host where the RMI remote objects have been exported.
+	at jdk.management.agent/sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:114)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:424)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:388)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+2025-01-08 14:17:25 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53765] throws
+java.io.IOException: The server sockets created using the LocalRMIServerSocketFactory only accept connections from clients running on the host where the RMI remote objects have been exported.
+	at jdk.management.agent/sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:114)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:424)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:388)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+2025-01-08 14:17:26 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53765] throws
+java.io.IOException: The server sockets created using the LocalRMIServerSocketFactory only accept connections from clients running on the host where the RMI remote objects have been exported.
+	at jdk.management.agent/sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:114)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:424)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:388)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+2025-01-08 14:17:26 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53765] throws
+java.io.IOException: The server sockets created using the LocalRMIServerSocketFactory only accept connections from clients running on the host where the RMI remote objects have been exported.
+	at jdk.management.agent/sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:114)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:424)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:388)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+2025-01-08 14:17:28 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53765] throws
+java.io.IOException: The server sockets created using the LocalRMIServerSocketFactory only accept connections from clients running on the host where the RMI remote objects have been exported.
+	at jdk.management.agent/sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:114)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:424)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:388)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+2025-01-08 14:17:28 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53765] throws
+java.io.IOException: The server sockets created using the LocalRMIServerSocketFactory only accept connections from clients running on the host where the RMI remote objects have been exported.
+	at jdk.management.agent/sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:114)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:424)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:388)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+2025-01-08 14:17:32 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53765] throws
+java.io.IOException: The server sockets created using the LocalRMIServerSocketFactory only accept connections from clients running on the host where the RMI remote objects have been exported.
+	at jdk.management.agent/sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:114)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:424)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:388)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+2025-01-08 14:17:32 WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=53765] throws
+java.io.IOException: The server sockets created using the LocalRMIServerSocketFactory only accept connections from clients running on the host where the RMI remote objects have been exported.
+	at jdk.management.agent/sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:114)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:424)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:388)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+2025-01-08 14:17:48 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h54m43s124ms946µs800ns).
+2025-01-08 14:22:22 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 14:27:22 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 14:32:22 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 14:37:22 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 14:42:22 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 14:47:22 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 14:52:22 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 16:32:11 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h39m21s650ms453µs400ns).
+2025-01-08 16:36:14 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 16:41:14 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 16:46:14 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 16:51:14 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 16:56:14 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 17:01:14 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 17:06:14 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 17:11:14 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 17:13:28 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application REVIEW-SERVICE with eureka with status DOWN
+2025-01-08 17:13:28 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736352808794, current=DOWN, previous=UP]
+2025-01-08 17:13:28 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/localhost:review-service:8082: registering service...
+2025-01-08 17:13:28 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/localhost:review-service:8082 - registration status: 204
+2025-01-08 17:13:29 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-01-08 17:13:29 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2025-01-08 17:13:29 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
 2025-01-08 17:13:29 INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
 2025-01-08 17:13:32 INFO  c.netflix.discovery.DiscoveryClient - Unregistering ...
-2025-01-08 17:13:32 INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8061/eureka/} exception=I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/localhost:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/localhost:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+2025-01-08 17:13:32 INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8061/eureka/} exception=I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/localhost:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/localhost:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
 	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915)
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895)
 	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:790)
@@ -546,8 +522,8 @@ Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http:
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889)
 	... 37 more
 
-2025-01-08 17:13:32 WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/localhost:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
-2025-01-08 17:13:32 INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8061/eureka/}, exception=I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/localhost:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/localhost:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+2025-01-08 17:13:32 WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/localhost:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+2025-01-08 17:13:32 INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8061/eureka/}, exception=I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/localhost:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/localhost:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
 	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915)
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895)
 	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:790)
@@ -629,8 +605,8 @@ Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http:
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889)
 	... 38 more
 
-2025-01-08 17:13:32 WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/localhost:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
-2025-01-08 17:13:32 ERROR c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/localhost:comment-service:8085 - de-registration failedCannot execute request on any known server
+2025-01-08 17:13:32 WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/localhost:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+2025-01-08 17:13:32 ERROR c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/localhost:review-service:8082 - de-registration failedCannot execute request on any known server
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
 	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
@@ -663,79 +639,78 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
 	at java.base/java.lang.Thread.run(Thread.java:1589)
 2025-01-08 17:13:32 INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
-2025-01-08 17:29:30 INFO  b.p.s.CommentServiceApplication - Starting CommentServiceApplication using Java 19.0.2 with PID 24352 (C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava\comment-service\target\classes started by Sami Bachiri in C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava)
-2025-01-08 17:29:30 INFO  b.p.s.CommentServiceApplication - No active profile set, falling back to 1 default profile: "default"
-2025-01-08 17:29:30 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Fetching config from server at : http://localhost:8088/
-2025-01-08 17:29:30 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Located environment: name=comment-service, profiles=[default], label=null, version=null, state=null
-2025-01-08 17:29:30 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-01-08 17:29:30 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 132 ms. Found 1 JPA repository interface.
-2025-01-08 17:29:31 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=5a96a377-1447-3009-8bf3-5b161d6c14de
-2025-01-08 17:29:31 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-01-08 17:29:31 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
-2025-01-08 17:29:31 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8085 (http)
-2025-01-08 17:29:31 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
-2025-01-08 17:29:31 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-01-08 17:29:31 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
-2025-01-08 17:29:31 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-01-08 17:29:31 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1389 ms
-2025-01-08 17:29:31 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-01-08 17:29:31 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
-2025-01-08 17:29:31 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-01-08 17:29:32 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-01-08 17:29:32 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-01-08 17:29:32 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6b94c200
-2025-01-08 17:29:32 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-01-08 17:29:32 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-01-08 17:29:32 WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-01-08 17:29:33 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-01-08 17:29:33 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-01-08 17:29:33 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-01-08 17:29:34 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
-2025-01-08 17:29:34 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2025-01-08 17:29:34 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
-2025-01-08 17:29:34 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
-2025-01-08 17:29:34 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1736353774780 with initial instances count: 2
-2025-01-08 17:29:34 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application COMMENT-SERVICE with eureka with status UP
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736353774784, current=UP, previous=STARTING]
-2025-01-08 17:29:34 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/DESKTOP-U6BK1PH:comment-service:8085: registering service...
-2025-01-08 17:29:34 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8085 (http) with context path '/'
-2025-01-08 17:29:34 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8085
-2025-01-08 17:29:34 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/DESKTOP-U6BK1PH:comment-service:8085 - registration status: 204
-2025-01-08 17:29:34 INFO  b.p.s.CommentServiceApplication - Started CommentServiceApplication in 6.004 seconds (process running for 6.664)
-2025-01-08 17:34:34 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 17:39:34 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 17:44:34 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 17:51:38 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m35s755ms419µs).
-2025-01-08 17:51:40 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 17:56:40 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 17:58:09 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m519ms343µs100ns).
-2025-01-08 18:02:10 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 18:08:08 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m28s918ms156µs200ns).
-2025-01-08 18:14:33 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m25s465ms98µs899ns).
-2025-01-08 18:15:05 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 18:20:05 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 18:20:24 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application COMMENT-SERVICE with eureka with status DOWN
-2025-01-08 18:20:24 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736356824451, current=DOWN, previous=UP]
-2025-01-08 18:20:24 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/DESKTOP-U6BK1PH:comment-service:8085: registering service...
-2025-01-08 18:20:24 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/DESKTOP-U6BK1PH:comment-service:8085 - registration status: 204
+2025-01-08 17:29:58 INFO  b.p.s.ReviewServiceApplication - Starting ReviewServiceApplication using Java 19.0.2 with PID 16552 (C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava\review-service\target\classes started by Sami Bachiri in C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava)
+2025-01-08 17:29:58 INFO  b.p.s.ReviewServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-08 17:29:58 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Fetching config from server at : http://localhost:8088/
+2025-01-08 17:29:58 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Located environment: name=review-service, profiles=[default], label=null, version=null, state=null
+2025-01-08 17:29:59 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-08 17:29:59 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 127 ms. Found 1 JPA repository interface.
+2025-01-08 17:29:59 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=f28d6abc-8b3a-36c5-b9a6-909139b9d0cc
+2025-01-08 17:29:59 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2025-01-08 17:29:59 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2025-01-08 17:29:59 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8082 (http)
+2025-01-08 17:29:59 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2025-01-08 17:29:59 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-08 17:29:59 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2025-01-08 17:29:59 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-08 17:29:59 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1361 ms
+2025-01-08 17:30:00 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-08 17:30:00 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2025-01-08 17:30:00 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-08 17:30:00 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-08 17:30:00 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-08 17:30:00 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1e295f7f
+2025-01-08 17:30:00 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-08 17:30:00 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-08 17:30:00 WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-01-08 17:30:01 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-08 17:30:01 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-08 17:30:02 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-08 17:30:02 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2025-01-08 17:30:02 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2025-01-08 17:30:02 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2025-01-08 17:30:02 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2025-01-08 17:30:02 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 17:30:02 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2025-01-08 17:30:02 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2025-01-08 17:30:02 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2025-01-08 17:30:02 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2025-01-08 17:30:02 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2025-01-08 17:30:02 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2025-01-08 17:30:02 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2025-01-08 17:30:03 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2025-01-08 17:30:03 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2025-01-08 17:30:03 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2025-01-08 17:30:03 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1736353803139 with initial instances count: 3
+2025-01-08 17:30:03 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application REVIEW-SERVICE with eureka with status UP
+2025-01-08 17:30:03 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736353803142, current=UP, previous=STARTING]
+2025-01-08 17:30:03 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2025-01-08 17:30:03 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/DESKTOP-U6BK1PH:review-service:8082: registering service...
+2025-01-08 17:30:03 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8082 (http) with context path '/'
+2025-01-08 17:30:03 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8082
+2025-01-08 17:30:03 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/DESKTOP-U6BK1PH:review-service:8082 - registration status: 204
+2025-01-08 17:30:03 INFO  b.p.s.ReviewServiceApplication - Started ReviewServiceApplication in 5.97 seconds (process running for 6.793)
+2025-01-08 17:35:02 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 17:40:02 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 17:45:02 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 17:51:36 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m35s757ms272µs400ns).
+2025-01-08 17:52:08 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 17:57:08 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 17:58:07 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m527ms37µs600ns).
+2025-01-08 18:02:39 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 18:08:06 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m28s926ms299µs700ns).
+2025-01-08 18:14:32 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m25s466ms216µs399ns).
+2025-01-08 18:15:33 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2025-01-08 18:20:24 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application REVIEW-SERVICE with eureka with status DOWN
+2025-01-08 18:20:24 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736356824468, current=DOWN, previous=UP]
+2025-01-08 18:20:24 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/DESKTOP-U6BK1PH:review-service:8082: registering service...
+2025-01-08 18:20:24 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/DESKTOP-U6BK1PH:review-service:8082 - registration status: 204
 2025-01-08 18:20:24 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-01-08 18:20:24 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2025-01-08 18:20:24 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
 2025-01-08 18:20:24 INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
 2025-01-08 18:20:27 INFO  c.netflix.discovery.DiscoveryClient - Unregistering ...
-2025-01-08 18:20:27 INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8061/eureka/} exception=I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/DESKTOP-U6BK1PH:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/DESKTOP-U6BK1PH:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+2025-01-08 18:20:27 INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8061/eureka/} exception=I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/DESKTOP-U6BK1PH:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/DESKTOP-U6BK1PH:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
 	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915)
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895)
 	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:790)
@@ -816,8 +791,8 @@ Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http:
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889)
 	... 37 more
 
-2025-01-08 18:20:27 WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/DESKTOP-U6BK1PH:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
-2025-01-08 18:20:27 INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8061/eureka/}, exception=I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/DESKTOP-U6BK1PH:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/DESKTOP-U6BK1PH:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+2025-01-08 18:20:27 WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/DESKTOP-U6BK1PH:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+2025-01-08 18:20:27 INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8061/eureka/}, exception=I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/DESKTOP-U6BK1PH:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/DESKTOP-U6BK1PH:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
 	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915)
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895)
 	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:790)
@@ -899,8 +874,8 @@ Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http:
 	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889)
 	... 38 more
 
-2025-01-08 18:20:27 WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8061/eureka/apps/COMMENT-SERVICE/DESKTOP-U6BK1PH:comment-service:8085": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
-2025-01-08 18:20:27 ERROR c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/DESKTOP-U6BK1PH:comment-service:8085 - de-registration failedCannot execute request on any known server
+2025-01-08 18:20:27 WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: I/O error on DELETE request for "http://localhost:8061/eureka/apps/REVIEW-SERVICE/DESKTOP-U6BK1PH:review-service:8082": Connect to http://localhost:8061 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+2025-01-08 18:20:27 ERROR c.netflix.discovery.DiscoveryClient - DiscoveryClient_REVIEW-SERVICE/DESKTOP-U6BK1PH:review-service:8082 - de-registration failedCannot execute request on any known server
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
 	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
@@ -933,58 +908,3 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
 	at java.base/java.lang.Thread.run(Thread.java:1589)
 2025-01-08 18:20:27 INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
-2025-01-08 18:28:12 INFO  b.p.s.CommentServiceApplication - Starting CommentServiceApplication using Java 19.0.2 with PID 30016 (C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava\comment-service\target\classes started by Sami Bachiri in C:\Users\Sami Bachiri\Desktop\School\3e jaar\Fullstack java\project\project-SamiBachiriPXL\backend-java\FullstackJava)
-2025-01-08 18:28:12 INFO  b.p.s.CommentServiceApplication - No active profile set, falling back to 1 default profile: "default"
-2025-01-08 18:28:12 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Fetching config from server at : http://localhost:8088/
-2025-01-08 18:28:12 INFO  o.s.c.c.c.ConfigServerConfigDataLoader - Located environment: name=comment-service, profiles=[default], label=null, version=null, state=null
-2025-01-08 18:28:13 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-01-08 18:28:13 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 138 ms. Found 1 JPA repository interface.
-2025-01-08 18:28:13 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=5a96a377-1447-3009-8bf3-5b161d6c14de
-2025-01-08 18:28:13 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2025-01-08 18:28:13 WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
-2025-01-08 18:28:14 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8085 (http)
-2025-01-08 18:28:14 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
-2025-01-08 18:28:14 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-01-08 18:28:14 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
-2025-01-08 18:28:14 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-01-08 18:28:14 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1385 ms
-2025-01-08 18:28:14 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-01-08 18:28:14 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
-2025-01-08 18:28:14 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-01-08 18:28:14 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-01-08 18:28:14 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-01-08 18:28:15 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@8636cf4
-2025-01-08 18:28:15 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-01-08 18:28:15 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-01-08 18:28:15 WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-01-08 18:28:16 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-01-08 18:28:16 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-01-08 18:28:16 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-01-08 18:28:17 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
-2025-01-08 18:28:19 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
-2025-01-08 18:28:19 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
-2025-01-08 18:28:19 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2025-01-08 18:28:19 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
-2025-01-08 18:28:19 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
-2025-01-08 18:28:19 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1736357299532 with initial instances count: 2
-2025-01-08 18:28:19 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application COMMENT-SERVICE with eureka with status UP
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1736357299536, current=UP, previous=STARTING]
-2025-01-08 18:28:19 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/localhost:comment-service:8085: registering service...
-2025-01-08 18:28:19 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8085 (http) with context path '/'
-2025-01-08 18:28:19 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8085
-2025-01-08 18:28:19 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_COMMENT-SERVICE/localhost:comment-service:8085 - registration status: 204
-2025-01-08 18:28:20 INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
-2025-01-08 18:28:20 INFO  b.p.s.CommentServiceApplication - Started CommentServiceApplication in 10.059 seconds (process running for 10.935)
-2025-01-08 18:36:54 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m8s902ms735µs800ns).

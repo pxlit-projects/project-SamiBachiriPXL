@@ -12,5 +12,5 @@ public interface IPostService {
     void addPost(PostRequest postRequest);
     List<PostResponse> getAllPosts();
     void updatePost(Long id, PostUpdateRequest postRequest);
-    List<PostResponse> filterPosts(FilterRequest filterRequest);
+    List<PostResponse> getPublishedPosts();
 }

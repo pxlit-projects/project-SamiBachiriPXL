@@ -1,0 +1,26 @@
+<app-navigation-bar/>
+
+<form (ngSubmit)="onCreate()" class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
+  <div class="mb-4">
+    <label for="title" class="block text-gray-700 font-bold mb-2">Title:</label>
+    <input [(ngModel)]="title" type="text" id="title" name="title" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+  </div>
+  <div class="mb-4">
+    <label for="content" class="block text-gray-700 font-bold mb-2">Content:</label>
+    <textarea [(ngModel)]="content" id="content" name="content" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+  </div>
+  <div class="mb-4">
+    <label for="isConcept" class="block text-gray-700 font-bold mb-2">Is Concept:</label>
+    <input [(ngModel)]="concept" type="checkbox" id="isConcept" name="isConcept" class="mr-2 leading-tight">
+    <span class="text-gray-700">Yes</span>
+  </div>
+  <div>
+    <button type="submit" class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Create Post</button>
+  </div>
+
+  @if (showError){
+    <div class="mt-4">
+      <p class="text-red-600">All fields must be filled in</p>
+    </div>
+  }
+</form>

@@ -12,8 +12,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostResponse {
+    private Long id;
     private String title;
     private String content;
     private String author;
+    private boolean isConcept;
     private Date date;
 }

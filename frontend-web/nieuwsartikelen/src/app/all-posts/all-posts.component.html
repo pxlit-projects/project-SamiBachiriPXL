@@ -1,0 +1,12 @@
+<app-navigation-bar/>
+
+<div class="posts grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  @for (post of posts; track post.id;){
+    <div class="post p-4 bg-white rounded-md shadow-md">
+      <h3 class="text-xl font-bold mb-2">{{ post.title }}</h3>
+      <p class="mb-2">{{ post.content }}</p>
+      <p class="text-sm text-gray-600"><strong>Author:</strong> {{ post.author }}</p>
+      <p class="text-sm text-gray-600"><strong>Creation Date:</strong> {{ post.creationDate }}</p>
+    </div>
+  }
+</div>

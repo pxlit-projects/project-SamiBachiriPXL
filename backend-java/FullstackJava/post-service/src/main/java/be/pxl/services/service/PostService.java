@@ -3,7 +3,6 @@ package be.pxl.services.service;
 import be.pxl.services.domain.Post;
 import be.pxl.services.domain.Review;
 import be.pxl.services.domain.ReviewStatus;
-import be.pxl.services.domain.dto.FilterRequest;
 import be.pxl.services.domain.dto.PostRequest;
 import be.pxl.services.domain.dto.PostResponse;
 import be.pxl.services.domain.dto.PostUpdateRequest;
@@ -38,10 +37,8 @@ public class PostService implements IPostService {
     @Override
     public List<PostResponse> getAllPosts() {
         return postRepository.findAll().stream()
-                .filter(post -> !post.isConcept())
-                .filter(post -> post.getReviewStatus() == ReviewStatus.APPROVED)
                 .sorted(Comparator.comparing(Post::getCreationDate).reversed())
-                .map(post -> new PostResponse(post.getTitle(), post.getContent(), post.getAuthor(), post.getCreationDate()))
+                .map(post -> new PostResponse(post.getId(), post.getTitle(), post.getContent(), post.getAuthor(), post.isConcept(),post.getCreationDate()))
                 .toList();
     }
 
@@ -55,18 +52,12 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public List<PostResponse> filterPosts(FilterRequest filterRequest) {
-        String author = filterRequest.getAuthor();
-        if (author != null && author.isEmpty()) {
-            author = null;
-        }
-        List<Post> filteredPosts = postRepository.filterPosts(
-                filterRequest.getContent(),
-                author,
-                filterRequest.getDate()
-        );
-        return filteredPosts.stream()
-                .map(post -> new PostResponse(post.getTitle(), post.getContent(), post.getAuthor(), post.getCreationDate()))
+    public List<PostResponse> getPublishedPosts() {
+        return postRepository.findAll().stream()
+                .filter(post -> !post.isConcept())
+                .filter(post -> post.getReviewStatus() == ReviewStatus.APPROVED)
+                .sorted(Comparator.comparing(Post::getCreationDate).reversed())
+                .map(post -> new PostResponse(post.getId(), post.getTitle(), post.getContent(), post.getAuthor(), post.isConcept(),post.getCreationDate()))
                 .toList();
     }
 
