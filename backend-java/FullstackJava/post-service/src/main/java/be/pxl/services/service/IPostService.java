@@ -15,4 +15,5 @@ public interface IPostService {
     void updatePost(Long id, PostUpdateRequest postRequest);
     List<PostResponse> getPublishedPosts();
     PostResponse getPostById(Long id);
+    List<PostResponse> getPostsByAuthor(String author);
 }

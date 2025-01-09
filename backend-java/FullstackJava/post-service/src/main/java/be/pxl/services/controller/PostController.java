@@ -48,4 +48,9 @@ public class PostController {
     public ResponseEntity<?> getAllPublishedPosts() {
         return new ResponseEntity<>(postService.getPublishedPosts(), HttpStatus.OK);
     }
+
+    @GetMapping("/author/{author}")
+    public ResponseEntity<?> getPostsByAuthor(@PathVariable String author) {
+        return new ResponseEntity<>(postService.getPostsByAuthor(author), HttpStatus.OK);
+    }
 }

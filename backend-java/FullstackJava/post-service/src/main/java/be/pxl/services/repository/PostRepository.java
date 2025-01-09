@@ -12,11 +12,6 @@ import java.util.List;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-    @Query("SELECT p FROM Post p WHERE " +
-            "(:content IS NULL OR p.content LIKE %:content%) AND " +
-            "(:author IS NULL OR :author = '' OR p.author = :author) AND " +
-            "(:date IS NULL OR p.creationDate = :date)")
-    List<Post> filterPosts(@Param("content") String content,
-                           @Param("author") String author,
-                           @Param("date") Date date);
+    @Query("SELECT p FROM Post p WHERE p.author = :author")
+    List<Post> findPostsByAuthor(@Param("author") String author);
 }

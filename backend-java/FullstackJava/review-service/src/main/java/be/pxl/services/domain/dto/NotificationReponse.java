@@ -1,20 +1,15 @@
-package be.pxl.services.domain;
+package be.pxl.services.domain.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Data
 @Builder
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@Table(name = "notification")
-public class Notification {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+@AllArgsConstructor
+public class NotificationReponse {
     private Long id;
     private String message;
     private String sender;

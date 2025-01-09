@@ -68,6 +68,14 @@ public class PostService implements IPostService {
                 .orElseThrow(() -> new RuntimeException("Post not found"));
     }
 
+    @Override
+    public List<PostResponse> getPostsByAuthor(String author) {
+        return postRepository.findPostsByAuthor(author).stream()
+                .sorted(Comparator.comparing(Post::getCreationDate).reversed())
+                .map(post -> new PostResponse(post.getId(), post.getTitle(), post.getContent(), post.getAuthor(), post.isConcept(),post.getCreationDate(), post.getReviewStatus(), post.getReviewComment()))
+                .toList();
+    }
+
     @RabbitListener(queues = "myQueue")
     public void handleReview(Review review) {
         try {
