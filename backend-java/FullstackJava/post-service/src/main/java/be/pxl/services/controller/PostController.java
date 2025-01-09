@@ -31,6 +31,11 @@ public class PostController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getPost(@PathVariable Long id) {
+        return new ResponseEntity<>(postService.getPostById(id), HttpStatus.OK);
+    }
+
     @GetMapping
     public ResponseEntity<?> getAllPosts(@RequestHeader(value = "role") String role) {
         if (role.equals("redacteur") || role.equals("reviewer")) {

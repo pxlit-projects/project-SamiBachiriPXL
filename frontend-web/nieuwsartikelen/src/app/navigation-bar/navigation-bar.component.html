@@ -1,7 +1,10 @@
 <header class="bg-gray-400 p-3 flex justify-between items-center">
   <a routerLink="/publishedPosts">published posts</a>
-  @if (isRedacteur){
+  @if (role  === 'redacteur'){
     <a routerLink="/createPost">Create post</a>
+    <a routerLink="/allPosts">All posts</a>
+  }
+  @if (role === 'reviewer'){
     <a routerLink="/allPosts">All posts</a>
   }
   <button (click)="logout()">Logout</button>

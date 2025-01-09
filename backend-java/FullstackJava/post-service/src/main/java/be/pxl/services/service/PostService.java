@@ -38,7 +38,7 @@ public class PostService implements IPostService {
     public List<PostResponse> getAllPosts() {
         return postRepository.findAll().stream()
                 .sorted(Comparator.comparing(Post::getCreationDate).reversed())
-                .map(post -> new PostResponse(post.getId(), post.getTitle(), post.getContent(), post.getAuthor(), post.isConcept(),post.getCreationDate()))
+                .map(post -> new PostResponse(post.getId(), post.getTitle(), post.getContent(), post.getAuthor(), post.isConcept(),post.getCreationDate(), post.getReviewStatus(), post.getReviewComment()))
                 .toList();
     }
 
@@ -57,8 +57,15 @@ public class PostService implements IPostService {
                 .filter(post -> !post.isConcept())
                 .filter(post -> post.getReviewStatus() == ReviewStatus.APPROVED)
                 .sorted(Comparator.comparing(Post::getCreationDate).reversed())
-                .map(post -> new PostResponse(post.getId(), post.getTitle(), post.getContent(), post.getAuthor(), post.isConcept(),post.getCreationDate()))
+                .map(post -> new PostResponse(post.getId(), post.getTitle(), post.getContent(), post.getAuthor(), post.isConcept(),post.getCreationDate(), post.getReviewStatus(), post.getReviewComment()))
                 .toList();
+    }
+
+    @Override
+    public PostResponse getPostById(Long id) {
+        return postRepository.findById(id)
+                .map(post -> new PostResponse(post.getId(), post.getTitle(), post.getContent(), post.getAuthor(), post.isConcept(),post.getCreationDate(), post.getReviewStatus(), post.getReviewComment()))
+                .orElseThrow(() -> new RuntimeException("Post not found"));
     }
 
     @RabbitListener(queues = "myQueue")

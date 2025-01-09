@@ -12,7 +12,6 @@ import {Router, RouterLink} from '@angular/router';
 })
 export class NavigationBarComponent {
   role: string = localStorage.getItem('role') || '';
-  isRedacteur: boolean = this.role === 'redacteur';
   constructor(private router: Router) {}
 
   logout() {

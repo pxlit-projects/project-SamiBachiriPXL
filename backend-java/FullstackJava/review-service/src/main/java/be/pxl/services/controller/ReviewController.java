@@ -13,7 +13,10 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @PostMapping("/{postId}")
-    public ResponseEntity<?> createReview(@PathVariable Long postId, @RequestBody ReviewRequest reviewRequest) {
+    public ResponseEntity<?> createReview(@RequestHeader(value = "role") String role, @PathVariable Long postId, @RequestBody ReviewRequest reviewRequest) {
+        if (!role.equals("reviewer")) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
         reviewService.createReview(postId, reviewRequest);
         return new ResponseEntity<>(HttpStatus.OK);
     }

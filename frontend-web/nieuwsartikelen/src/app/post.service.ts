@@ -18,6 +18,11 @@ export class PostService {
     return this.http.get<Post[]>(this.url, { headers });
   }
 
+  getPost(postId: string){
+    const headers = { 'role': localStorage.getItem('role') ?? 'gebruiker' };
+    return this.http.get<Post>(this.url + postId, { headers });
+  }
+
   getPublisedPosts(){
       return this.http.get(this.url + 'published');
   }
@@ -27,8 +32,8 @@ export class PostService {
     return this.http.post(this.url, postRequest, { headers });
   }
 
-  updatePost(post: Post) {
+  updatePost(postRequest: PostRequest, postId: string) {
     const headers = { 'role': localStorage.getItem('role') ?? 'gebruiker' };
-    return this.http.put(this.url + '/' + post.id, post, { headers });
+    return this.http.post(this.url + postId, postRequest, { headers });
   }
 }

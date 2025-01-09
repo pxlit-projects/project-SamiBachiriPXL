@@ -4,7 +4,6 @@ import be.pxl.services.domain.Review;
 import be.pxl.services.domain.dto.ReviewRequest;
 import be.pxl.services.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 import {PostService} from '../post.service';
-import {RouterOutlet} from '@angular/router';
+import {Router, RouterOutlet} from '@angular/router';
 import {NavigationBarComponent} from '../navigation-bar/navigation-bar.component';
 
 @Component({
@@ -17,7 +17,7 @@ import {NavigationBarComponent} from '../navigation-bar/navigation-bar.component
 export class PublishedPostsComponent implements OnInit {
   posts: any = [];
   filteredPosts: any = [];
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit() {
     this.postService.getPublisedPosts().subscribe({
@@ -38,5 +38,9 @@ export class PublishedPostsComponent implements OnInit {
       }
       return post[field].toLowerCase().includes(value.toLowerCase());
     });
+  }
+
+  navigateToPostDetail(postId: number) {
+    this.router.navigate(['/post-detail', postId]);
   }
 }

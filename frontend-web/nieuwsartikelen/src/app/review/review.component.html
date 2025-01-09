@@ -1,0 +1,11 @@
+<app-navigation-bar/>
+
+<div class="review-form p-4 bg-white rounded-md shadow-md max-w-md mx-auto mt-8">
+  <label for="content" class="block text-gray-700 text-sm font-bold mb-2">Content:</label>
+  <input type="text" id="content" [(ngModel)]="content" class="form-control w-full p-2 border border-gray-300 rounded-md mb-4" />
+
+  <div class="flex justify-between">
+    <button (click)="createReview(true)" class="btn btn-success bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">Approve</button>
+    <button (click)="createReview(false)" class="btn btn-danger bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">Reject</button>
+  </div>
+</div>

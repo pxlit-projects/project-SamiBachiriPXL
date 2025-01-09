@@ -1,5 +1,6 @@
 package be.pxl.services.service;
 
+import be.pxl.services.domain.Post;
 import be.pxl.services.domain.dto.FilterRequest;
 import be.pxl.services.domain.dto.PostRequest;
 import be.pxl.services.domain.dto.PostResponse;
@@ -13,4 +14,5 @@ public interface IPostService {
     List<PostResponse> getAllPosts();
     void updatePost(Long id, PostUpdateRequest postRequest);
     List<PostResponse> getPublishedPosts();
+    PostResponse getPostById(Long id);
 }

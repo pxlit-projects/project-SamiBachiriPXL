@@ -7,13 +7,14 @@
 <!--  <input type="date" placeholder="Filter by creation date" (input)="filter('creationDate', $event.target.value)" class="p-2 border border-gray-300 rounded-md w-full">-->
 <!--</div>-->
 
-<div class="posts grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="flex flex-col items-center">
   @for (post of filteredPosts; track post.id;){
     <div class="post p-4 bg-white rounded-md shadow-md">
       <h3 class="text-xl font-bold mb-2">{{ post.title }}</h3>
       <p class="mb-2">{{ post.content }}</p>
       <p class="text-sm text-gray-600"><strong>Author:</strong> {{ post.author }}</p>
       <p class="text-sm text-gray-600"><strong>Creation Date:</strong> {{ post.creationDate }}</p>
+      <button (click)="navigateToPostDetail(post.id)" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md">View Details</button>
     </div>
   }
 </div>

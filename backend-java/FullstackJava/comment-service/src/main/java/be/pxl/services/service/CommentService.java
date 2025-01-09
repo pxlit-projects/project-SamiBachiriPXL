@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CommentService {
+public class CommentService implements ICommentService {
     private static final Logger log = LoggerFactory.getLogger(CommentService.class);
     private final CommentRepository commentRepository;
 
@@ -43,9 +43,26 @@ public class CommentService {
         log.info("Comment updated: {}", comment);
     }
 
-    public List<CommentResponse> getComments() {
-        return commentRepository.findAll().stream()
-                .map(comment -> new CommentResponse(comment.getComment(), comment.getAuthor()))
+    public List<CommentResponse> getCommentsByPostId(long postId) {
+        return commentRepository.findByPostId(postId).stream()
+                .map(comment -> CommentResponse.builder()
+                        .id(comment.getId())
+                        .comment(comment.getComment())
+                        .author(comment.getAuthor())
+                        .postId(comment.getPostId())
+                        .build())
                 .toList();
+    }
+
+    @Override
+    public CommentResponse getCommentById(long commentId) {
+        return commentRepository.findById(commentId)
+                .map(comment -> CommentResponse.builder()
+                        .id(comment.getId())
+                        .comment(comment.getComment())
+                        .author(comment.getAuthor())
+                        .postId(comment.getPostId())
+                        .build())
+                .orElseThrow(() -> new RuntimeException("Comment not found"));
     }
 }

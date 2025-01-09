@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PostService} from '../post.service';
 import {NavigationBarComponent} from '../navigation-bar/navigation-bar.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-all-posts',
@@ -13,7 +14,8 @@ import {NavigationBarComponent} from '../navigation-bar/navigation-bar.component
 })
 export class AllPostsComponent implements OnInit{
   posts: any = [];
-  constructor(private postService: PostService) {}
+  role: string = localStorage.getItem('role') || '';
+  constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit() {
     this.fetchPosts();
@@ -28,5 +30,13 @@ export class AllPostsComponent implements OnInit{
         console.error('There was an error!', error);
       }
     })
+  }
+
+  navigateToEditPost(postId: number) {
+    this.router.navigate(['/editPost', postId]);
+  }
+
+  navigateToReviewPost(postId: number) {
+    this.router.navigate(['/review', postId]);
   }
 }

@@ -5,4 +5,6 @@ export interface Post{
   author: string;
   creationDate: Date;
   isConcept:boolean;
+  reviewStatus: string;
+  reviewComment: string;
 }
