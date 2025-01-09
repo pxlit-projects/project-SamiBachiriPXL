@@ -17,8 +17,10 @@
     <h4 class="text-lg font-bold mb-2">Comments</h4>
     @for (comment of comments; track comment.id){
       <div class="mb-4 p-4 border border-gray-300 rounded-md shadow-sm">
-        <p class="text-sm text-gray-600"><strong>{{ comment.author }}:</strong> {{ comment.comment }}</p>
+        <p class="text-sm text-gray-700"><strong>{{ comment.author }}:</strong></p>
+        <p>{{ comment.comment }}</p>
         <button (click)="deleteComment(comment.id)" class="mt-2 px-4 py-2 bg-red-500 text-white rounded-md">Delete</button>
+        <button (click)="editComment(comment.id)" class="mt-2 ml-5 px-4 py-2 bg-green-500 text-white rounded-md">Edit</button>
       </div>
     }
   </div>

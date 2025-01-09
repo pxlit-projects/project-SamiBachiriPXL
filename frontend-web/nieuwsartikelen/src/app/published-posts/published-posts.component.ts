@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
+import { DatePipe } from '@angular/common';
 import {PostService} from '../post.service';
 import {Router, RouterOutlet} from '@angular/router';
 import {NavigationBarComponent} from '../navigation-bar/navigation-bar.component';
@@ -9,7 +10,8 @@ import {NavigationBarComponent} from '../navigation-bar/navigation-bar.component
   standalone: true,
   imports: [
     RouterOutlet,
-    NavigationBarComponent
+    NavigationBarComponent,
+    DatePipe
   ],
   templateUrl: './published-posts.component.html',
   styleUrl: './published-posts.component.css'

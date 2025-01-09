@@ -9,11 +9,11 @@
 
 <div class="flex flex-col items-center">
   @for (post of filteredPosts; track post.id;){
-    <div class="post p-4 bg-white rounded-md shadow-md">
+    <div class="w-full max-w-3xl p-6 bg-white rounded-md shadow-md mb-4">
       <h3 class="text-xl font-bold mb-2">{{ post.title }}</h3>
       <p class="mb-2">{{ post.content }}</p>
       <p class="text-sm text-gray-600"><strong>Author:</strong> {{ post.author }}</p>
-      <p class="text-sm text-gray-600"><strong>Creation Date:</strong> {{ post.creationDate }}</p>
+      <p class="text-sm text-gray-600"><strong>Creation Date:</strong> {{ post.date | date:'medium' }}</p>
       <button (click)="navigateToPostDetail(post.id)" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md">View Details</button>
     </div>
   }

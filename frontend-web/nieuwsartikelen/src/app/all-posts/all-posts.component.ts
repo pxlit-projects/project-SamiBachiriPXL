@@ -2,12 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {PostService} from '../post.service';
 import {NavigationBarComponent} from '../navigation-bar/navigation-bar.component';
 import {Router} from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-all-posts',
   standalone: true,
   imports: [
-    NavigationBarComponent
+    NavigationBarComponent,
+    DatePipe
   ],
   templateUrl: './all-posts.component.html',
   styleUrl: './all-posts.component.css'
@@ -33,6 +35,7 @@ export class AllPostsComponent implements OnInit{
   }
 
   navigateToEditPost(postId: number) {
+
     this.router.navigate(['/editPost', postId]);
   }
 

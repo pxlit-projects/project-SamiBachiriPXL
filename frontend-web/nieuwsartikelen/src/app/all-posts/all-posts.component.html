@@ -6,7 +6,7 @@
       <h3 class="text-xl font-bold mb-2">{{ post.title }}</h3>
       <p class="mb-2">{{ post.content }}</p>
       <p class="text-sm text-gray-600"><strong>Author:</strong> {{ post.author }}</p>
-      <p class="text-sm text-gray-600"><strong>Creation Date:</strong> {{ post.creationDate }}</p>
+      <p class="text-sm text-gray-600"><strong>Creation Date:</strong> {{ post.date | date:'medium' }}</p>
       <p class="text-sm text-gray-600"><strong>Review Status:</strong> {{ post.reviewStatus }}</p>
       @if (post.reviewStatus === 'REJECTED'){
         <p class="text-sm text-gray-600"><strong>Review Comment:</strong> {{ post.reviewComment }}</p>

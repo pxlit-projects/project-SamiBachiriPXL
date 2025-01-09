@@ -5,8 +5,8 @@
     <h3 class="text-xl font-bold mb-2">Add Comment</h3>
     <form (ngSubmit)="onSubmit()">
       <div class="mb-4">
-        <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-        <textarea id="content" formControlName="content" rows="4" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+        <label for="comment" class="block text-sm font-medium text-gray-700">Content</label>
+        <textarea [(ngModel)]="comment" id="comment" name="comment" rows="4" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"></textarea>
       </div>
       <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Submit</button>
     </form>

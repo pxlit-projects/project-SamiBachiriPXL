@@ -20,7 +20,7 @@ export class CommentService {
 
   getCommentsByPostId(postId: number) {
     const headers = { 'role': localStorage.getItem('role') ?? 'gebruiker' };
-    return this.http.get<Comment[]>(this.url + postId, { headers });
+    return this.http.get<Comment[]>(this.url + "allcomments/" + postId, { headers });
   }
 
   updateComment(commentRequest: CommentRequest, postId: string) {
@@ -30,7 +30,7 @@ export class CommentService {
 
   deleteComment(commentId: number) {
     const headers = { 'role': localStorage.getItem('role') ?? 'gebruiker' };
-    return this.http.put(this.url + commentId, { headers });
+    return this.http.delete(this.url + commentId, { headers });
   }
 
   getCommentById(commentId: string) {

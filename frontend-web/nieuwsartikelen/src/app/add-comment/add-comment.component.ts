@@ -17,7 +17,7 @@ import { NavigationBarComponent } from '../navigation-bar/navigation-bar.compone
   styleUrls: ['./add-comment.component.css']
 })
 export class AddCommentComponent implements OnInit {
-  content: string = '';
+  comment: string = '';
 
   constructor(
     private commentService: CommentService,
@@ -31,7 +31,7 @@ export class AddCommentComponent implements OnInit {
     const postId = this.route.snapshot.paramMap.get('id') || '';
     const commentRequest: CommentRequest = {
       author: localStorage.getItem('username') || '',
-      comment: this.content,
+      comment: this.comment,
     };
     this.commentService.addComment(commentRequest, postId).subscribe({
       next: () => {

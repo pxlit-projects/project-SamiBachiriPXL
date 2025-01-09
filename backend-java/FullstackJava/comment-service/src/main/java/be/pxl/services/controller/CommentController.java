@@ -39,7 +39,7 @@ public class CommentController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/{postid}")
+    @GetMapping("/allcomments/{postid}")
     public ResponseEntity<?> getComments(@RequestHeader(value = "role") String role, @PathVariable Long postid) {
         if (role == null) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);

@@ -36,6 +36,7 @@ export class EditPostComponent implements OnInit {
     this.postService.getPost(this.postId).subscribe({
       next: (data: PostRequest) => {
         if (data) {
+          console.log('Post data:', data.isConcept);
           this.post = data;
         } else {
           console.error('No data found for the given post ID');
@@ -50,6 +51,7 @@ export class EditPostComponent implements OnInit {
   onSubmit() {
     this.postService.updatePost(this.post, this.postId).subscribe({
       next: (data) => {
+        console.log('Post updated:');
         this.router.navigate(['/allPosts']);
       },
       error: (error) => {

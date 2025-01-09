@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {FormsModule, NgModel} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import { CommentService } from '../comment.service';
-import { CommentRequest } from '../models/commentRequest.model';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
+import {Comment} from '../models/comment.model';
 
 @Component({
   selector: 'app-edit-comment',
@@ -16,7 +16,7 @@ import { NavigationBarComponent } from '../navigation-bar/navigation-bar.compone
   styleUrls: ['./edit-comment.component.css']
 })
 export class EditCommentComponent implements OnInit {
-  comment: CommentRequest = { author: '', comment: '' };
+  comment: Comment = { id: 0, postId: 0,author: '', comment: '' };
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +28,7 @@ export class EditCommentComponent implements OnInit {
     const commentId = this.route.snapshot.paramMap.get('id') || '';
     if (commentId) {
       this.commentService.getCommentById(commentId).subscribe({
-        next: (data: CommentRequest) => {
+        next: (data: Comment) => {
           this.comment = data;
         },
         error: (error: any) => {
@@ -42,7 +42,7 @@ export class EditCommentComponent implements OnInit {
     const commentId = this.route.snapshot.paramMap.get('id') || '';
     this.commentService.updateComment(this.comment, commentId).subscribe({
       next: () => {
-        this.router.navigate(['/post-detail', this.route.snapshot.paramMap.get('postId')]);
+        this.router.navigate(['/post-detail', this.comment.postId]);
       },
       error: (error: any) => {
         console.error('Error updating comment:', error);

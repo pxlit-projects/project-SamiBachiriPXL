@@ -66,6 +66,10 @@ export class PostDetailComponent implements OnInit {
     this.router.navigate(['/comment', postId]);
   }
 
+  editComment(commentId: number) {
+    this.router.navigate(['/edit-comment', commentId]);
+  }
+
   deleteComment(id: number) {
     this.commentService.deleteComment(id).subscribe({
       next: () => {
