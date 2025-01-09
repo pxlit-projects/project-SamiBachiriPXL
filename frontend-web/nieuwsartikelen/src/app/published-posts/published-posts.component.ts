@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from '../user.service';
+import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import {PostService} from '../post.service';
-import {Router, RouterOutlet} from '@angular/router';
-import {NavigationBarComponent} from '../navigation-bar/navigation-bar.component';
+import { PostService } from '../post.service';
+import { Router, RouterOutlet } from '@angular/router';
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-published-posts',
@@ -11,14 +11,18 @@ import {NavigationBarComponent} from '../navigation-bar/navigation-bar.component
   imports: [
     RouterOutlet,
     NavigationBarComponent,
-    DatePipe
+    DatePipe,
+    FormsModule // Include FormsModule for two-way binding
   ],
   templateUrl: './published-posts.component.html',
-  styleUrl: './published-posts.component.css'
+  styleUrls: ['./published-posts.component.css']
 })
 export class PublishedPostsComponent implements OnInit {
   posts: any = [];
   filteredPosts: any = [];
+  selectedField: string = 'content';
+  filterValue: string = '';
+
   constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit() {
@@ -30,15 +34,26 @@ export class PublishedPostsComponent implements OnInit {
       error: (error) => {
         console.error('There was an error!', error);
       }
-    })
+    });
+  }
+
+  onFilterTypeChange() {
+    this.filterValue = '';
+    this.filteredPosts = this.posts;
   }
 
   filter(field: string, value: string) {
+    if (!value) {
+      this.filteredPosts = this.posts;
+      return;
+    }
+
     this.filteredPosts = this.posts.filter((post: any) => {
       if (field === 'creationDate') {
-        return post.creationDate.startsWith(value);
+        const postDate = post.date.split('T')[0];
+        return postDate === value;
       }
-      return post[field].toLowerCase().includes(value.toLowerCase());
+      return post[field]?.toLowerCase().includes(value.toLowerCase());
     });
   }
 

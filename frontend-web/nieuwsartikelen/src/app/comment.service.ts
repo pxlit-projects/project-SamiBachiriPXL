@@ -1,15 +1,15 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ReviewRequest} from './models/reviewRequest.model';
 import {CommentRequest} from './models/commentRequest.model';
 import {Comment} from './models/comment.model';
+import {environment} from '../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
   http: HttpClient = inject(HttpClient);
-  url = 'http://localhost:8080/api/comment/';
+  url = environment.apiUrlComment;
 
   constructor() { }
 

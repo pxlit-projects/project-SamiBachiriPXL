@@ -1,11 +1,15 @@
-<header class="bg-gray-400 p-3 flex justify-between items-center">
-  <a routerLink="/publishedPosts">published posts</a>
-  @if (role  === 'redacteur'){
-    <a routerLink="/createPost">Create post</a>
-    <a routerLink="/allPosts">All posts</a>
-  }
-  @if (role === 'reviewer'){
-    <a routerLink="/allPosts">All posts</a>
-  }
-  <button (click)="logout()">Logout</button>
+<header class="bg-gray-800 text-white p-4 flex justify-between items-center shadow-md">
+  <div class="flex items-center space-x-4">
+    <a routerLink="/publishedPosts" class="text-lg font-semibold hover:text-gray-300">Published Articles</a>
+    @if (role  === 'redacteur'){
+      <a routerLink="/createPost" class="text-lg font-semibold hover:text-gray-300">Create Article</a>
+      <a routerLink="/allPosts" class="text-lg font-semibold hover:text-gray-300">All Articles</a>
+      <a routerLink="/Notifications" class="text-lg font-semibold hover:text-gray-300">Notifications</a>
+    }
+
+    @if (role === 'reviewer'){
+      <a routerLink="/allPosts" class="text-lg font-semibold hover:text-gray-300">All Articles</a>
+    }
+  </div>
+  <button (click)="logout()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Logout</button>
 </header>

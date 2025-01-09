@@ -9,6 +9,7 @@ import {ReviewComponent} from './review/review.component';
 import {PostDetailComponent} from './post-detail/post-detail.component';
 import {AddCommentComponent} from './add-comment/add-comment.component';
 import {EditCommentComponent} from './edit-comment/edit-comment.component';
+import {NotificationsComponent} from './notifications/notifications.component';
 
 export const routes: Routes = [
 
@@ -21,6 +22,7 @@ export const routes: Routes = [
   { path: 'post-detail/:id', component: PostDetailComponent, canActivate: [AuthGuard] },
   { path: 'comment/:id', component: AddCommentComponent, canActivate: [AuthGuard] },
   { path: 'edit-comment/:id', component: EditCommentComponent, canActivate: [AuthGuard] },
+  { path: 'Notifications', component: NotificationsComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
 ];

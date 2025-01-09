@@ -1,6 +1,33 @@
 <app-navigation-bar/>
 
 <div class="flex flex-col items-center">
+  <div class="mb-4 w-full max-w-3xl">
+    <div class="flex space-x-4">
+      <select [(ngModel)]="selectedField" (change)="onFilterTypeChange()" class="p-2 border rounded-md">
+        <option value="content">Content</option>
+        <option value="author">Author</option>
+        <option value="creationDate">Date</option>
+      </select>
+
+      @if(selectedField === 'creationDate'){
+        <input
+          [(ngModel)]="filterValue"
+          (change)="filter(selectedField, filterValue)"
+          type="date"
+          class="p-2 border rounded-md"
+        />
+      }
+      @else{
+        <input
+          [(ngModel)]="filterValue"
+          (input)="filter(selectedField, filterValue)"
+          placeholder="Enter filter value"
+          class="p-2 border rounded-md flex-grow"
+        />
+      }
+    </div>
+  </div>
+
   @for (post of posts; track post.id;){
     <div class="w-full max-w-3xl p-6 bg-white rounded-md shadow-md mb-4">
       <h3 class="text-xl font-bold mb-2">{{ post.title }}</h3>
@@ -11,13 +38,14 @@
       @if (post.reviewStatus === 'REJECTED'){
         <p class="text-sm text-gray-600"><strong>Review Comment:</strong> {{ post.reviewComment }}</p>
       }
-      <p class="text-sm text-gray-600"><strong>Concept:</strong> {{ post.isConcept ? 'true' : 'false' }}</p>
+      <p class="text-sm text-gray-600"><strong>Concept:</strong> {{ post.concept ? 'true' : 'false' }}</p>
+
 
       <div class="mt-2">
         @if (role === 'redacteur'){
         <button (click)="navigateToEditPost(post.id)" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Edit</button>
         }
-        @if (role === 'reviewer' && !post.isConcept){
+        @if (role === 'reviewer' && !post.concept){
           <button (click)="navigateToReviewPost(post.id)" class="bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 ml-2">Review</button>
         }
       </div>

@@ -17,7 +17,6 @@ import { NavigationBarComponent } from '../navigation-bar/navigation-bar.compone
 })
 export class EditPostComponent implements OnInit {
   postId: string = '';
-  concept: boolean = false;
   post: PostRequest = {
     title: '',
     content: '',

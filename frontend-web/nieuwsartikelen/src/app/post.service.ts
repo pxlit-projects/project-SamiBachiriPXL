@@ -2,13 +2,14 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Post} from './models/post.model';
 import {PostRequest} from './models/postRequest.model';
+import { environment } from '../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
   http: HttpClient = inject(HttpClient);
-  url = 'http://localhost:8080/api/post/';
+  url = environment.apiUrlPost;
 
   constructor() {}
 
@@ -35,5 +36,10 @@ export class PostService {
   updatePost(postRequest: PostRequest, postId: string) {
     const headers = { 'role': localStorage.getItem('role') ?? 'gebruiker' };
     return this.http.post(this.url + postId, postRequest, { headers });
+  }
+
+  getPostsByAuthor(author: string){
+    const headers = { 'role': localStorage.getItem('role') ?? 'gebruiker' };
+    return this.http.get<Post[]>(this.url + `author/${author}`, { headers });
   }
 }
