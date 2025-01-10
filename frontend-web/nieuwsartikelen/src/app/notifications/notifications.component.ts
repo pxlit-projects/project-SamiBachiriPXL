@@ -37,7 +37,7 @@ export class NotificationsComponent implements OnInit {
 
   fetchAllNotifications() {
     this.posts.forEach(post => {
-      this.fetchNotifications(post.id);
+      this.fetchNotifications(post.id.toString());
     });
   }
 

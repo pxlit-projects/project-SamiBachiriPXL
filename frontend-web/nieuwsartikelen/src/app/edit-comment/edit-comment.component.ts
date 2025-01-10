@@ -10,7 +10,7 @@ import {Comment} from '../models/comment.model';
   standalone: true,
   imports: [
     NavigationBarComponent,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './edit-comment.component.html',
   styleUrls: ['./edit-comment.component.css']
