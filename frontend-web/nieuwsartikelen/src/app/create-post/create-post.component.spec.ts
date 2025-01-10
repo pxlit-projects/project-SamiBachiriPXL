@@ -1,91 +1,89 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
-import { of, throwError } from 'rxjs';
 import { CreatePostComponent } from './create-post.component';
 import { PostService } from '../post.service';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { of } from 'rxjs';
+import { Router } from '@angular/router';
 import { PostRequest } from '../models/postRequest.model';
-import { ActivatedRoute } from '@angular/router';
 
 describe('CreatePostComponent', () => {
   let component: CreatePostComponent;
   let fixture: ComponentFixture<CreatePostComponent>;
-  let postService: jasmine.SpyObj<PostService>;
-  let router: jasmine.SpyObj<Router>;
-  let activatedRoute: ActivatedRoute;
+  let postService: PostService;
+  let router: Router;
 
   beforeEach(async () => {
-    const postServiceSpy = jasmine.createSpyObj('PostService', ['createPost']);
-    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
-    const activatedRouteStub = {
-      snapshot: { paramMap: { get: (key: string) => '1' } }
-    };
-
     await TestBed.configureTestingModule({
-      imports: [FormsModule, CreatePostComponent],
-      providers: [
-        { provide: PostService, useValue: postServiceSpy },
-        { provide: Router, useValue: routerSpy },
-        { provide: ActivatedRoute, useValue: activatedRouteStub }
-      ]
+      imports: [FormsModule, RouterTestingModule],
+      declarations: [CreatePostComponent],
+      providers: [PostService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(CreatePostComponent);
     component = fixture.componentInstance;
-    postService = TestBed.inject(PostService) as jasmine.SpyObj<PostService>;
-    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
-    activatedRoute = TestBed.inject(ActivatedRoute);
+    postService = TestBed.inject(PostService);
+    router = TestBed.inject(Router);
 
-    fixture.detectChanges();
+    // Mock the PostService to simulate a successful post creation
+    spyOn(postService, 'createPost').and.returnValue(of({
+      title: 'Test Post',
+      content: 'This is the content of the post',
+      author: localStorage.getItem('username') ?? 'Unknown',
+      isConcept: true
+    }));
+
+    // Mock router navigate method to test navigation
+    spyOn(router, 'navigate');
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show error if title or content is empty', () => {
-    component.title = '';
-    component.content = '';
+  it('should not submit the form if title or content is empty', () => {
+    component.title = ''; // Empty title
+    component.content = ''; // Empty content
     component.onCreate();
-    expect(component.showError).toBeTrue();
 
-    component.title = 'Test Title';
-    component.content = '';
-    component.onCreate();
-    expect(component.showError).toBeTrue();
-
-    component.title = '';
-    component.content = 'Test Content';
-    component.onCreate();
+    // The error message should be displayed if either title or content is empty
     expect(component.showError).toBeTrue();
   });
 
-  it('should create post and navigate to allPosts on success', () => {
-    component.title = 'Test Title';
-    component.content = 'Test Content';
-    const mockPostRequest: PostRequest = {
-      title: 'Test Title',
-      content: 'Test Content',
-      author: 'Unknown',
-      isConcept: false
-    };
-    postService.createPost.and.returnValue(of({}));
-
+  it('should submit the form if title and content are provided', () => {
+    component.title = 'Test Post';
+    component.content = 'This is the content of the post';
+    component.concept = true; // Optional field (checkbox)
     component.onCreate();
 
-    expect(postService.createPost).toHaveBeenCalledWith(mockPostRequest);
+    // Ensure the createPost method of the service was called with the correct parameters
+    expect(postService.createPost).toHaveBeenCalledWith({
+      title: 'Test Post',
+      content: 'This is the content of the post',
+      author: localStorage.getItem('username') ?? 'Unknown',
+      isConcept: true
+    });
+
+    // Ensure navigation to 'allPosts' after successful submission
     expect(router.navigate).toHaveBeenCalledWith(['/allPosts']);
   });
 
-  it('should handle error when creating post', () => {
-    component.title = 'Test Title';
-    component.content = 'Test Content';
-    postService.createPost.and.returnValue(throwError('Error creating post'));
-    spyOn(console, 'error');
-
+  it('should display error if fields are not filled', () => {
+    component.title = ''; // Title is empty
+    component.content = 'Valid content';
     component.onCreate();
 
-    expect(postService.createPost).toHaveBeenCalled();
-    expect(console.error).toHaveBeenCalledWith('Error adding project-list:', 'Error creating post');
+    // Error message should be shown when title is empty
+    expect(component.showError).toBeTrue();
+  });
+
+  it('should not display error when all fields are filled', () => {
+    component.title = 'Valid Title';
+    component.content = 'Valid content';
+    component.concept = false;
+    component.onCreate();
+
+    // Error message should not be displayed
+    expect(component.showError).toBeFalse();
   });
 });

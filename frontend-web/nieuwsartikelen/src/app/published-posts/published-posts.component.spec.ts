@@ -4,6 +4,8 @@ import { of, throwError } from 'rxjs';
 import { PublishedPostsComponent } from './published-posts.component';
 import { PostService } from '../post.service';
 import { ActivatedRoute } from '@angular/router';
+import { Post } from '../models/post.model';
+import {HttpTestingController} from '@angular/common/http/testing';
 
 describe('PublishedPostsComponent', () => {
   let component: PublishedPostsComponent;
@@ -11,6 +13,7 @@ describe('PublishedPostsComponent', () => {
   let postService: jasmine.SpyObj<PostService>;
   let router: jasmine.SpyObj<Router>;
   let activatedRoute: ActivatedRoute;
+  let httpTestingController : HttpTestingController;
 
   beforeEach(async () => {
     const postServiceSpy = jasmine.createSpyObj('PostService', ['getPublisedPosts']);
@@ -32,6 +35,7 @@ describe('PublishedPostsComponent', () => {
     component = fixture.componentInstance;
     postService = TestBed.inject(PostService) as jasmine.SpyObj<PostService>;
     router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
+    httpTestingController = TestBed.inject(HttpTestingController);
     activatedRoute = TestBed.inject(ActivatedRoute);
 
     fixture.detectChanges();
@@ -42,44 +46,54 @@ describe('PublishedPostsComponent', () => {
   });
 
   it('should fetch published posts on init', () => {
-    const mockPosts = [{ id: 1, content: 'Test Post', date: '2023-10-01T00:00:00Z' }];
-    postService.getPublisedPosts.and.returnValue(of(mockPosts));
+    const mockPosts: Post[] = [{
+      id: 1,
+      title: 'Test Post',
+      content: 'Test Content',
+      author: 'Test Author',
+      date: new Date('2023-10-01'),
+      isConcept: false,
+      reviewStatus: 'approved',
+      reviewComment: 'Looks good'
+    }];
+    postService.getPublishedPosts.and.returnValue(of(mockPosts));
 
     component.ngOnInit();
 
-    expect(postService.getPublisedPosts).toHaveBeenCalled();
+    expect(postService.getPublishedPosts).toHaveBeenCalled();
     expect(component.posts).toEqual(mockPosts);
     expect(component.filteredPosts).toEqual(mockPosts);
   });
 
   it('should handle error when fetching published posts', () => {
-    postService.getPublisedPosts.and.returnValue(throwError('Error fetching posts'));
+    postService.getPublishedPosts.and.returnValue(throwError('Error fetching posts'));
     spyOn(console, 'error');
 
     component.ngOnInit();
 
-    expect(postService.getPublisedPosts).toHaveBeenCalled();
+    expect(postService.getPublishedPosts).toHaveBeenCalled();
     expect(console.error).toHaveBeenCalledWith('There was an error!', 'Error fetching posts');
   });
 
   it('should filter posts by content', () => {
     component.posts = [
-      { id: 1, content: 'Test Post 1', date: '2023-10-01T00:00:00Z' },
-      { id: 2, content: 'Another Post', date: '2023-10-02T00:00:00Z' }
+      { id: 1, title: 'Test Post 1', content: 'Test Content 1', author: 'Author 1', creationDate: new Date('2023-10-01'), isConcept: false, reviewStatus: 'approved', reviewComment: 'Looks good' },
+      { id: 2, title: 'Another Post', content: 'Another Content', author: 'Author 2', creationDate: new Date('2023-10-02'), isConcept: false, reviewStatus: 'approved', reviewComment: 'Looks good' }
     ];
     component.filter('content', 'Test');
 
-    expect(component.filteredPosts).toEqual([{ id: 1, content: 'Test Post 1', date: '2023-10-01T00:00:00Z' }]);
+    const req = httpTestingController.expectOne('http://localhost:3000/posts?content=Test');
+    req.flush({ id: 1, title: 'Test Post 1', content: 'Test Content 1', author: 'Author 1', creationDate: new Date('2023-10-01'), isConcept: false, reviewStatus: 'approved', reviewComment: 'Looks good' });
   });
 
   it('should filter posts by creation date', () => {
     component.posts = [
-      { id: 1, content: 'Test Post 1', date: '2023-10-01T00:00:00Z' },
-      { id: 2, content: 'Another Post', date: '2023-10-02T00:00:00Z' }
+      { id: 1, title: 'Test Post 1', content: 'Test Content 1', author: 'Author 1', creationDate: new Date('2023-10-01'), isConcept: false, reviewStatus: 'approved', reviewComment: 'Looks good' },
+      { id: 2, title: 'Another Post', content: 'Another Content', author: 'Author 2', creationDate: new Date('2023-10-02'), isConcept: false, reviewStatus: 'approved', reviewComment: 'Looks good' }
     ];
     component.filter('creationDate', '2023-10-01');
 
-    expect(component.filteredPosts).toEqual([{ id: 1, content: 'Test Post 1', date: '2023-10-01T00:00:00Z' }]);
+    expect(component.filteredPosts).toEqual([{ id: 1, title: 'Test Post 1', content: 'Test Content 1', author: 'Author 1', creationDate: new Date('2023-10-01'), isConcept: false, reviewStatus: 'approved', reviewComment: 'Looks good' }]);
   });
 
   it('should navigate to post detail', () => {

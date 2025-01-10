@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { AllPostsComponent } from './all-posts.component';
 import { PostService } from '../post.service';
+import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Post } from '../models/post.model';
 
@@ -16,9 +16,15 @@ describe('AllPostsComponent', () => {
   beforeEach(async () => {
     const postServiceSpy = jasmine.createSpyObj('PostService', ['getPosts']);
     const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+    routerSpy.routerState = { snapshot: {} } as any; // Mock routerState to avoid error
 
     await TestBed.configureTestingModule({
-      imports: [FormsModule, ReactiveFormsModule, DatePipe, AllPostsComponent],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        RouterTestingModule, // Use RouterTestingModule without routes
+        AllPostsComponent // Import the standalone component
+      ],
       providers: [
         { provide: PostService, useValue: postServiceSpy },
         { provide: Router, useValue: routerSpy }
@@ -43,7 +49,7 @@ describe('AllPostsComponent', () => {
       title: 'Test Post',
       content: 'Test Content',
       author: 'Test Author',
-      creationDate: new Date('2023-01-01'),
+      date: new Date('2023-01-01'),
       isConcept: false,
       reviewStatus: 'approved',
       reviewComment: 'Looks good'
@@ -95,5 +101,16 @@ describe('AllPostsComponent', () => {
     component.navigateToReviewPost(1);
 
     expect(router.navigate).toHaveBeenCalledWith(['/review', 1]);
+  });
+
+  it('should reset filter value when filter type changes', () => {
+    fixture.detectChanges();
+    component.filterValue = 'Test';
+    component.filteredposts = [{ id: 1, title: 'Test Post', content: 'Test Content', author: 'Test Author', creationDate: new Date('2023-01-01'), isConcept: false, reviewStatus: 'approved', reviewComment: 'Looks good' }];
+
+    component.onFilterTypeChange();
+
+    expect(component.filterValue).toEqual('');
+    expect(component.filteredposts).toEqual(component.posts);
   });
 });

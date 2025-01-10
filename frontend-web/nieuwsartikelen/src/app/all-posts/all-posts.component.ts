@@ -34,6 +34,7 @@ export class AllPostsComponent implements OnInit {
     this.postService.getPosts().subscribe({
       next: (data) => {
         this.posts = data;
+        this.filteredposts = data;
       },
       error: (error) => {
         console.error('There was an error!', error);

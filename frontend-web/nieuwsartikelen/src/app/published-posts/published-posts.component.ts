@@ -26,7 +26,7 @@ export class PublishedPostsComponent implements OnInit {
   constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit() {
-    this.postService.getPublisedPosts().subscribe({
+    this.postService.getPublishedPosts().subscribe({
       next: (data) => {
         this.posts = data;
         this.filteredPosts = data;

@@ -24,13 +24,13 @@ export class PostService {
     return this.http.get<Post>(this.url + postId, { headers });
   }
 
-  getPublisedPosts(){
-      return this.http.get(this.url + 'published');
+  getPublishedPosts(){
+      return this.http.get<Post[]>(this.url + 'published');
   }
 
   createPost(postRequest: PostRequest) {
     const headers = { 'role': localStorage.getItem('role') ?? 'gebruiker' };
-    return this.http.post(this.url, postRequest, { headers });
+    return this.http.post<PostRequest>(this.url, postRequest, { headers });
   }
 
   updatePost(postRequest: PostRequest, postId: string) {

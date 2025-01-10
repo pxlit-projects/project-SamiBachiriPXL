@@ -56,7 +56,7 @@ describe('PostDetailComponent', () => {
       title: 'Test Post',
       content: 'Test Content',
       author: 'Author',
-      creationDate: new Date('2023-01-01'),
+      date: new Date('2023-01-01'),
       isConcept: false,
       reviewStatus: 'approved',
       reviewComment: 'Looks good'
@@ -85,7 +85,7 @@ describe('PostDetailComponent', () => {
       title: 'Test Post',
       content: 'Test Content',
       author: 'Author',
-      creationDate: new Date('2023-01-01'),
+      date: new Date('2023-01-01'),
       isConcept: false,
       reviewStatus: 'approved',
       reviewComment: 'Looks good'
@@ -105,7 +105,7 @@ describe('PostDetailComponent', () => {
       title: 'Test Post',
       content: 'Test Content',
       author: 'Author',
-      creationDate: new Date('2023-01-01'),
+      date: new Date('2023-01-01'),
       isConcept: false,
       reviewStatus: 'approved',
       reviewComment: 'Looks good'

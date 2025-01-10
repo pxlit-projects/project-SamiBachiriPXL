@@ -40,8 +40,6 @@ describe('ReviewComponent', () => {
 
     fixture = TestBed.createComponent(ReviewComponent);
     component = fixture.componentInstance;
-    reviewService = TestBed.inject(ReviewService) as jasmine.SpyObj<ReviewService>;
-    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
     activatedRoute = TestBed.inject(ActivatedRoute);
 
     fixture.detectChanges();

@@ -25,7 +25,7 @@ export class CommentService {
 
   updateComment(commentRequest: CommentRequest, postId: string) {
     const headers = { 'role': localStorage.getItem('role') ?? 'gebruiker' };
-    return this.http.put(this.url + postId, commentRequest, { headers });
+    return this.http.put<CommentRequest>(this.url + postId, commentRequest, { headers });
   }
 
   deleteComment(commentId: number) {

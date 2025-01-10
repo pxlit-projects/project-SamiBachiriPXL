@@ -30,7 +30,6 @@ describe('AddCommentComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(AddCommentComponent);
-    component = fixture.componentInstance;
     commentService = TestBed.inject(CommentService) as jasmine.SpyObj<CommentService>;
     router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
     activatedRoute = TestBed.inject(ActivatedRoute);

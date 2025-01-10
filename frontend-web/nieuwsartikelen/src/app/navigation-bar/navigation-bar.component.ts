@@ -17,6 +17,6 @@ export class NavigationBarComponent {
   logout() {
     console.log(this.role + ' logged out');
     localStorage.clear();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then(r => console.log('navigated to login'));
   }
 }

@@ -32,7 +32,7 @@ describe('PostService', () => {
       title: 'Test Post',
       content: 'Test Content',
       author: 'Author',
-      creationDate: new Date('2023-01-01'),
+      date: new Date('2023-01-01'),
       isConcept: false,
       reviewStatus: 'approved',
       reviewComment: 'Looks good'
@@ -55,7 +55,7 @@ describe('PostService', () => {
       title: 'Test Post',
       content: 'Test Content',
       author: 'Author',
-      creationDate: new Date('2023-01-01'),
+      date: new Date('2023-01-01'),
       isConcept: false,
       reviewStatus: 'approved',
       reviewComment: 'Looks good'
@@ -76,13 +76,13 @@ describe('PostService', () => {
       title: 'Published Post',
       content: 'Published Content',
       author: 'Author',
-      creationDate: new Date('2023-01-01'),
+      date: new Date('2023-01-01'),
       isConcept: false,
       reviewStatus: 'approved',
       reviewComment: 'Looks good'
     }];
 
-    service.getPublisedPosts().subscribe(posts => {
+    service.getPublishedPosts().subscribe(posts => {
       expect(posts).toEqual(mockPosts);
     });
 
@@ -133,14 +133,13 @@ describe('PostService', () => {
       title: 'Author Post',
       content: 'Author Content',
       author: 'Author',
-      creationDate: new Date('2023-01-01'),
+      date: new Date('2023-01-01'),
       isConcept: false,
       reviewStatus: 'approved',
       reviewComment: 'Looks good'
     }];
 
     service.getPostsByAuthor(author).subscribe(posts => {
-      expect(posts.length).toBe(1);
       expect(posts).toEqual(mockPosts);
     });
 

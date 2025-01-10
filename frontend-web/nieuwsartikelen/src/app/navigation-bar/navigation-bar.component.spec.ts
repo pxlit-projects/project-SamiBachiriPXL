@@ -1,45 +1,37 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { NavigationBarComponent } from './navigation-bar.component';
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'router-link',
-  template: ''
-})
-class RouterLinkStub {}
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
 
 describe('NavigationBarComponent', () => {
   let component: NavigationBarComponent;
   let fixture: ComponentFixture<NavigationBarComponent>;
-  let router: jasmine.SpyObj<Router>;
+  let router: Router;
 
-  beforeEach(async () => {
-    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
-
-    await TestBed.configureTestingModule({
-      imports: [NavigationBarComponent],
-      providers: [
-        { provide: Router, useValue: routerSpy }
-      ],
-      declarations: [RouterLinkStub]
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule, NavigationBarComponent], // Fix: Use imports for standalone component
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavigationBarComponent);
     component = fixture.componentInstance;
-    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
-
-    fixture.detectChanges();
+    router = TestBed.inject(Router);
+    spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should log out and navigate to login', () => {
-    spyOn(localStorage, 'clear');
+  it('should initialize with role from localStorage', () => {
+    localStorage.setItem('role', 'redacteur');
+    component.role = localStorage.getItem('role') || '';
+    expect(component.role).toBe('redacteur');
+  });
+
+  it('should clear localStorage and navigate to login on logout', async () => {
     component.logout();
-    expect(localStorage.clear).toHaveBeenCalled();
+    expect(localStorage.getItem('role')).toBeNull();
     expect(router.navigate).toHaveBeenCalledWith(['/login']);
   });
 });

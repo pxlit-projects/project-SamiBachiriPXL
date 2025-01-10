@@ -3,7 +3,7 @@ export interface Post{
   title: string;
   content: string;
   author: string;
-  creationDate: Date;
+  date: Date;
   isConcept:boolean;
   reviewStatus: string;
   reviewComment: string;

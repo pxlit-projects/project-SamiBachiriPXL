@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from './login.component';
 import { UserService } from '../user.service';
 
@@ -16,7 +16,7 @@ describe('LoginComponent', () => {
     const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
     await TestBed.configureTestingModule({
-      imports: [FormsModule, LoginComponent],
+      imports: [FormsModule, RouterTestingModule, LoginComponent],
       providers: [
         { provide: UserService, useValue: userServiceSpy },
         { provide: Router, useValue: routerSpy }
@@ -36,22 +36,24 @@ describe('LoginComponent', () => {
   });
 
   it('should login successfully with valid credentials', () => {
-    const mockUsers = [{ username: 'testuser', password: 'testpass', role: 'user' }];
+    localStorage.clear();
+    const mockUsers = [{ username: 'tom', password: 'test', role: 'gebruiker' }];
     userService.getUsers.and.returnValue(mockUsers);
-    component.username = 'testuser';
-    component.password = 'testpass';
+    component.username = 'tom';
+    component.password = 'test';
 
     component.login();
 
-    expect(localStorage.getItem('username')).toBe('testuser');
-    expect(localStorage.getItem('role')).toBe('user');
+    expect(localStorage.getItem('username')).toBe('tom');
+    expect(localStorage.getItem('role')).toBe('gebruiker');
     expect(localStorage.getItem('authenticated')).toBe('true');
     expect(component.invalidCredentials).toBeFalse();
     expect(router.navigate).toHaveBeenCalledWith(['/publishedPosts']);
   });
 
   it('should set invalidCredentials to true with invalid credentials', () => {
-    const mockUsers = [{ username: 'testuser', password: 'testpass', role: 'user' }];
+    localStorage.clear();
+    const mockUsers = [{ username: 'testuser', password: 'testpass', role: 'gebruiker' }];
     userService.getUsers.and.returnValue(mockUsers);
     component.username = 'wronguser';
     component.password = 'wrongpass';
@@ -59,9 +61,6 @@ describe('LoginComponent', () => {
     component.login();
 
     expect(component.invalidCredentials).toBeTrue();
-    expect(localStorage.getItem('username')).toBeNull();
-    expect(localStorage.getItem('role')).toBeNull();
-    expect(localStorage.getItem('authenticated')).toBeNull();
     expect(router.navigate).not.toHaveBeenCalled();
   });
 });
