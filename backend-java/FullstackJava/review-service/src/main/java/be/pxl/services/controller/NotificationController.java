@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/notifications")
 public class NotificationController {
     private final ReviewService reviewService;
 
-    @GetMapping("/notifications/{postId}")
+    @GetMapping("/{postId}")
     public ResponseEntity<?> getNotifications(@RequestHeader(value = "role") String role, @PathVariable long postId) {
         if (!role.equals("redacteur")) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
@@ -19,7 +20,7 @@ public class NotificationController {
         return new ResponseEntity<>(reviewService.getNotifications(postId), HttpStatus.OK);
     }
 
-    @DeleteMapping("/notifications/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteNotification(@RequestHeader(value = "role") String role, @PathVariable long id) {
         if (!role.equals("redacteur")) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
