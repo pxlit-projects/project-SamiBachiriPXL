@@ -1,8 +1,10 @@
 package be.pxl.services.service;
 
+import be.pxl.services.client.NotificationClient;
 import be.pxl.services.domain.Post;
 import be.pxl.services.domain.Review;
 import be.pxl.services.domain.ReviewStatus;
+import be.pxl.services.domain.dto.NotificationRequest;
 import be.pxl.services.domain.dto.PostRequest;
 import be.pxl.services.domain.dto.PostResponse;
 import be.pxl.services.domain.dto.PostUpdateRequest;
@@ -20,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostService implements IPostService {
     private final PostRepository postRepository;
+    private final NotificationClient notificationClient;
 
     @Override
     public void addPost(PostRequest postRequest) {
@@ -32,6 +35,13 @@ public class PostService implements IPostService {
                 .reviewStatus(ReviewStatus.PENDING)
                 .build();
         postRepository.save(post);
+        log.info("Post created: {}", post.getId());
+        NotificationRequest notificationRequest = NotificationRequest.builder()
+                .postId(post.getId())
+                .message("New post created")
+                .sender(post.getAuthor())
+                .build();
+        notificationClient.createNotification(notificationRequest);
     }
 
     @Override

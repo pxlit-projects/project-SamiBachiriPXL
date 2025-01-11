@@ -3,6 +3,7 @@ package be.pxl.services.service;
 import be.pxl.services.domain.Notification;
 import be.pxl.services.domain.Review;
 import be.pxl.services.domain.dto.NotificationReponse;
+import be.pxl.services.domain.dto.NotificationRequest;
 import be.pxl.services.domain.dto.ReviewRequest;
 import be.pxl.services.repository.NotificationRepository;
 import be.pxl.services.repository.ReviewRepository;
@@ -17,7 +18,6 @@ import java.util.List;
 public class ReviewService implements IReviewService {
     private final RabbitTemplate rabbitTemplate;
     private final ReviewRepository reviewRepository;
-    private final NotificationService notificationService;
     private final NotificationRepository notificationRepository;
 
     @Override
@@ -57,9 +57,9 @@ public class ReviewService implements IReviewService {
                 .postId(review.getPostId())
                 .build();
         notificationRepository.save(notification);
-        notificationService.sendNotification(review.getEditor(), message);
     }
 
+    @Override
     public List<NotificationReponse> getNotifications(long postId) {
         return notificationRepository.findByPostId(postId).stream().map(notification -> NotificationReponse.builder()
                 .id(notification.getId())
@@ -67,6 +67,16 @@ public class ReviewService implements IReviewService {
                 .sender(notification.getSender())
                 .postId(notification.getPostId())
                 .build()).toList();
+    }
+
+    @Override
+    public void createNotification(NotificationRequest notificationRequest) {
+        Notification notification = Notification.builder()
+                .message(notificationRequest.getMessage())
+                .sender(notificationRequest.getSender())
+                .postId(notificationRequest.getPostId())
+                .build();
+        notificationRepository.save(notification);
     }
 
     public void deleteNotification(long id) {

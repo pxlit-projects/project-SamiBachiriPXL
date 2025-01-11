@@ -1,5 +1,6 @@
 package be.pxl.services.controller;
 
+import be.pxl.services.domain.dto.NotificationRequest;
 import be.pxl.services.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,12 @@ public class NotificationController {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         reviewService.deleteNotification(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> createNotification(@RequestBody NotificationRequest notificationRequest) {
+        reviewService.createNotification(notificationRequest);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
