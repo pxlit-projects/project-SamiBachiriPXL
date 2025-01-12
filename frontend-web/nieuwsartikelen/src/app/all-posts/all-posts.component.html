@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  @for (post of posts; track post.id;){
+  @for (post of filteredposts; track post.id;){
     <div class="w-full max-w-3xl p-6 bg-white rounded-md shadow-md mb-4">
       <h3 class="text-xl font-bold mb-2">{{ post.title }}</h3>
       <p class="mb-2">{{ post.content }}</p>
