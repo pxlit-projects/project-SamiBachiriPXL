@@ -17,3 +17,17 @@ Each folder contains its own specific `.gitignore` file.
 ## How to setup and run this application
 
 :heavy_check_mark:_(COMMENT) Add setup instructions and provide some direction to run the whole  application: frontend to backend._
+
+Eerst kijk je als de pom.xml fatsoenlijk is gelukt.
+Je runt daarna de dockercompose van in de backend. Vervolgens start je jouw backend applicatie met de juiste volgorde dat hieronder wordt vermeld:
+- config-server
+- discovery-service
+- gateway-service
+- post-service
+- review-service
+- comment-service
+
+In de frontend build je jouw dockerfile eerst en dan je run de docker file hieronder vindt je de commando's voor het builden en runnen, je moet in de folder zitten van dockerfile 
+om deze commando's uit te voeren:
+- docker build -t <naam> .
+- docker run -p 'port':90 'image_naam'
