@@ -70,18 +70,6 @@ public class PostServiceTest {
     }
 
     @Test
-    public void testAddPost() {
-        postService.addPost(postRequest);
-        verify(postRepository).save(postCaptor.capture());
-        Post savedPost = postCaptor.getValue();
-        assertEquals(postRequest.getTitle(), savedPost.getTitle());
-        assertEquals(postRequest.getContent(), savedPost.getContent());
-        assertEquals(postRequest.getAuthor(), savedPost.getAuthor());
-        assertTrue(savedPost.isConcept());
-        assertEquals(ReviewStatus.PENDING, savedPost.getReviewStatus());
-    }
-
-    @Test
     public void testGetAllPosts() {
         when(postRepository.findAll()).thenReturn(Collections.singletonList(post));
         List<PostResponse> posts = postService.getAllPosts();

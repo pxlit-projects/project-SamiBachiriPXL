@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { AddCommentComponent } from './add-comment.component';
@@ -42,7 +42,9 @@ describe('AddCommentComponent', () => {
   });
 
   it('should add comment on submit', () => {
-    component.comment = 'Test Comment';
+    component.commentForm = new FormGroup({
+      comment: new FormControl('Test Comment')
+    });
     const mockCommentRequest: CommentRequest = {
       author: 'testuser',
       comment: 'Test Comment'
@@ -57,7 +59,9 @@ describe('AddCommentComponent', () => {
   });
 
   it('should handle error when adding comment', () => {
-    component.comment = 'Test Comment';
+    component.commentForm = new FormGroup({
+      comment: new FormControl('Test Comment')
+    });
     commentService.addComment.and.returnValue(throwError('Error adding comment'));
     spyOn(console, 'error');
     spyOn(localStorage, 'getItem').and.returnValue('testuser');
